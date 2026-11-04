@@ -1,0 +1,20 @@
+{
+  "name": "syncdock",
+  "version": "0.9.4-rc3",
+  "description": "SyncDock v0.9.4-RC3 — Tactile Cross-Device Workspace & Spatial Dock",
+  "type": "module",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "node server/server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "nodemailer": "^6.9.14",
+    "ws": "^8.18.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
