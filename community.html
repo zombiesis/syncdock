@@ -320,7 +320,7 @@
 
     <div class="max-w-[1440px] mx-auto px-4 lg:px-8 h-16 flex items-center justify-between gap-4">
       <!-- Brand Identity -->
-      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="flex items-center gap-3 group text-left cursor-pointer shrink-0">
+      <a href="$clean$h"  class="flex items-center gap-3 group text-left cursor-pointer shrink-0">
         <div class="w-10 h-10 rounded-lg bg-ink text-paper flex items-center justify-center border border-ink relative overflow-hidden group-hover:border-signal transition-colors shadow-sm">
           <svg class="w-7 h-7" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g class="logo-coupler-pin logo-coupler-left">
@@ -345,12 +345,12 @@
 
       <!-- Primary Navigation Links -->
       <nav class="hidden lg:flex items-center gap-1 text-sm font-medium">
-        <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-overview" class="px-3.5 py-1.5 rounded-md text-slate hover:text-ink hover:bg-stone/60 transition-all flex items-center gap-1.5 cursor-pointer"><span>Product</span></a>
-        <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-workbench" class="px-3.5 py-1.5 rounded-md text-slate hover:text-ink hover:bg-stone/60 transition-all flex items-center gap-1.5 cursor-pointer"><span>Live Workbench</span><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span></a>
-        <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-pricing" class="px-3.5 py-1.5 rounded-md text-slate hover:text-ink hover:bg-stone/60 transition-all flex items-center gap-1.5 cursor-pointer"><span>Pricing</span></a>
-        <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-downloads" class="px-3.5 py-1.5 rounded-md text-slate hover:text-ink hover:bg-stone/60 transition-all flex items-center gap-1.5 cursor-pointer"><span>Downloads</span></a>
-        <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-docs" class="px-3.5 py-1.5 rounded-md text-slate hover:text-ink hover:bg-stone/60 transition-all flex items-center gap-1.5 cursor-pointer"><span>Documentation</span></a>
-        <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-community" class="px-3.5 py-1.5 rounded-md bg-ink text-paper font-semibold transition-all flex items-center gap-1.5 cursor-pointer"><span>Community</span></a>
+        <a href="$clean$h"  id="nav-tab-overview" class="px-3.5 py-1.5 rounded-md text-slate hover:text-ink hover:bg-stone/60 transition-all flex items-center gap-1.5 cursor-pointer"><span>Product</span></a>
+        <a href="$clean$h"  id="nav-tab-workbench" class="px-3.5 py-1.5 rounded-md text-slate hover:text-ink hover:bg-stone/60 transition-all flex items-center gap-1.5 cursor-pointer"><span>Live Workbench</span><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span></a>
+        <a href="$clean$h"  id="nav-tab-pricing" class="px-3.5 py-1.5 rounded-md text-slate hover:text-ink hover:bg-stone/60 transition-all flex items-center gap-1.5 cursor-pointer"><span>Pricing</span></a>
+        <a href="$clean$h"  id="nav-tab-downloads" class="px-3.5 py-1.5 rounded-md text-slate hover:text-ink hover:bg-stone/60 transition-all flex items-center gap-1.5 cursor-pointer"><span>Downloads</span></a>
+        <a href="$clean$h"  id="nav-tab-docs" class="px-3.5 py-1.5 rounded-md text-slate hover:text-ink hover:bg-stone/60 transition-all flex items-center gap-1.5 cursor-pointer"><span>Documentation</span></a>
+        <a href="$clean$h"  id="nav-tab-community" class="px-3.5 py-1.5 rounded-md bg-ink text-paper font-semibold transition-all flex items-center gap-1.5 cursor-pointer"><span>Community</span></a>
 
         <!-- Explore Mega-Menu Dropdown -->
         <div class="relative group">
@@ -361,7 +361,7 @@
           <div class="absolute left-0 top-full pt-2 w-72 hidden group-hover:block z-50">
             <div class="bg-surface border border-ink rounded-lg shadow-xl p-2 space-y-1 text-xs">
               
-              <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-studio" class="flex items-start gap-2.5 p-2 rounded hover:bg-stone/60 transition-colors">
+              <a href="$clean$h"  id="nav-tab-studio" class="flex items-start gap-2.5 p-2 rounded hover:bg-stone/60 transition-colors">
                 <i class="ph-bold ph-sliders-horizontal text-cobalt text-base mt-0.5"></i>
                 <div>
                   <div class="font-semibold text-ink">Visual .TOML Studio</div>
@@ -369,7 +369,7 @@
                 </div>
               </a>
               
-              <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-changelog" class="flex items-start gap-2.5 p-2 rounded hover:bg-stone/60 transition-colors">
+              <a href="$clean$h"  id="nav-tab-changelog" class="flex items-start gap-2.5 p-2 rounded hover:bg-stone/60 transition-colors">
                 <i class="ph-bold ph-git-commit text-signal text-base mt-0.5"></i>
                 <div>
                   <div class="font-semibold text-ink">Changelog &amp; Bug Bounty</div>
@@ -377,7 +377,7 @@
                 </div>
               </a>
               
-              <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-security" class="flex items-start gap-2.5 p-2 rounded hover:bg-stone/60 transition-colors">
+              <a href="$clean$h"  id="nav-tab-security" class="flex items-start gap-2.5 p-2 rounded hover:bg-stone/60 transition-colors">
                 <i class="ph-bold ph-shield-check text-forest text-base mt-0.5"></i>
                 <div>
                   <div class="font-semibold text-ink">WAF &amp; Edge Security</div>
@@ -385,7 +385,7 @@
                 </div>
               </a>
               
-              <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-about" class="flex items-start gap-2.5 p-2 rounded hover:bg-stone/60 transition-colors">
+              <a href="$clean$h"  id="nav-tab-about" class="flex items-start gap-2.5 p-2 rounded hover:bg-stone/60 transition-colors">
                 <i class="ph-bold ph-buildings text-amber text-base mt-0.5"></i>
                 <div>
                   <div class="font-semibold text-ink">About &amp; Hardware Labs</div>
@@ -393,7 +393,7 @@
                 </div>
               </a>
               
-              <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-status" class="flex items-start gap-2.5 p-2 rounded hover:bg-stone/60 transition-colors">
+              <a href="$clean$h"  id="nav-tab-status" class="flex items-start gap-2.5 p-2 rounded hover:bg-stone/60 transition-colors">
                 <i class="ph-bold ph-heartbeat text-emerald-600 text-base mt-0.5"></i>
                 <div>
                   <div class="font-semibold text-ink">System Status &amp; Mirrors</div>
@@ -401,7 +401,7 @@
                 </div>
               </a>
               
-              <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-legal" class="flex items-start gap-2.5 p-2 rounded hover:bg-stone/60 transition-colors">
+              <a href="$clean$h"  id="nav-tab-legal" class="flex items-start gap-2.5 p-2 rounded hover:bg-stone/60 transition-colors">
                 <i class="ph-bold ph-scales text-slate text-base mt-0.5"></i>
                 <div>
                   <div class="font-semibold text-ink">Trust Center &amp; Legal</div>
@@ -426,12 +426,12 @@
           <kbd class="px-1.5 py-0.5 text-[10px] rounded bg-surface border border-hairline">⌘K</kbd>
         </button>
 
-        <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="headerAuthStatusBtn" class="flex items-center gap-2 px-3.5 py-2 rounded-md text-xs font-medium bg-surface border border-hairline hover:border-ink transition-colors ">
+        <a href="$clean$h"  id="headerAuthStatusBtn" class="flex items-center gap-2 px-3.5 py-2 rounded-md text-xs font-medium bg-surface border border-hairline hover:border-ink transition-colors ">
           <span id="headerAuthDot" class="w-2 h-2 rounded-full bg-amber"></span>
           <span id="headerAuthLabel">Log in</span>
         </a>
 
-        <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="tactile-btn rounded-md bg-ink text-paper text-xs font-semibold px-4 py-2 border border-ink flex items-center gap-1.5 cursor-pointer">
+        <a href="$clean$h"  class="tactile-btn rounded-md bg-ink text-paper text-xs font-semibold px-4 py-2 border border-ink flex items-center gap-1.5 cursor-pointer">
           <span>Download</span>
           <i class="ph-bold ph-download-simple text-signal"></i>
         </a>
@@ -440,17 +440,17 @@
 
     <!-- Mobile Navigation Bar -->
     <div class="lg:hidden border-t border-hairline bg-stone/70 px-4 py-2 flex items-center gap-1.5 overflow-x-auto text-xs font-medium">
-      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Product</a>
-      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Workbench</a>
-      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Pricing</a>
-      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Downloads</a>
-      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Docs</a>
-      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="px-3 py-1 rounded bg-ink text-paper font-semibold shrink-0">Community</a>
-      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">TOML Studio</a>
-      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">About</a>
-      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Status</a>
-      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Legal</a>
-      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="px-3 py-1 rounded bg-signal text-white font-semibold shrink-0">Log in</a>
+      <a href="$clean$h"  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Product</a>
+      <a href="$clean$h"  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Workbench</a>
+      <a href="$clean$h"  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Pricing</a>
+      <a href="$clean$h"  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Downloads</a>
+      <a href="$clean$h"  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Docs</a>
+      <a href="$clean$h"  class="px-3 py-1 rounded bg-ink text-paper font-semibold shrink-0">Community</a>
+      <a href="$clean$h"  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">TOML Studio</a>
+      <a href="$clean$h"  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">About</a>
+      <a href="$clean$h"  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Status</a>
+      <a href="$clean$h"  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Legal</a>
+      <a href="$clean$h"  class="px-3 py-1 rounded bg-signal text-white font-semibold shrink-0">Log in</a>
     </div>
   </header>
   
@@ -575,10 +575,10 @@
           Engineered with tactile precision for software craftspeople, industrial designers, and multi-device builders. Zero cloud lock-in.
         </p>
         <div class="mt-4 flex items-center gap-3 text-slate">
-          <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  title="GitHub" class="hover:text-ink"><i class="ph-fill ph-github-logo text-lg"></i></a>
-          <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  title="X / Twitter" class="hover:text-ink"><i class="ph-bold ph-x-logo text-lg"></i></a>
-          <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  title="Discord" class="hover:text-ink"><i class="ph-fill ph-discord-logo text-lg"></i></a>
-          <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  title="Mastodon" class="hover:text-ink"><i class="ph-fill ph-mastodon-logo text-lg"></i></a>
+          <a href="https://github.com/zombiesis/syncdock" target="_blank" rel="noopener noreferrer" title="GitHub" class="hover:text-ink"><i class="ph-fill ph-github-logo text-lg"></i></a>
+          <a href="https://x.com/syncdock" target="_blank" rel="noopener noreferrer" title="X / Twitter" class="hover:text-ink"><i class="ph-bold ph-x-logo text-lg"></i></a>
+          <a href="https://discord.gg/syncdock" target="_blank" rel="noopener noreferrer" title="Discord" class="hover:text-ink"><i class="ph-fill ph-discord-logo text-lg"></i></a>
+          <a href="https://mastodon.social/@syncdock" target="_blank" rel="noopener noreferrer" title="Mastodon" class="hover:text-ink"><i class="ph-fill ph-mastodon-logo text-lg"></i></a>
         </div>
       </div>
 
@@ -586,30 +586,30 @@
         <div>
           <div class="text-ink font-semibold mb-2.5">Product &amp; Tools</div>
           <ul class="space-y-2 text-slate">
-            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">Product Overview</a></li>
-            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer font-semibold text-ink">Live Conduit Workbench</a></li>
-            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">Visual .TOML Studio</a></li>
-            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">Pricing &amp; Licensing</a></li>
-            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">OS Downloads</a></li>
-            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">Changelog &amp; Bounties</a></li>
+            <li><a href="$clean$h"  class="hover:text-signal cursor-pointer">Product Overview</a></li>
+            <li><a href="$clean$h"  class="hover:text-signal cursor-pointer font-semibold text-ink">Live Conduit Workbench</a></li>
+            <li><a href="$clean$h"  class="hover:text-signal cursor-pointer">Visual .TOML Studio</a></li>
+            <li><a href="$clean$h"  class="hover:text-signal cursor-pointer">Pricing &amp; Licensing</a></li>
+            <li><a href="$clean$h"  class="hover:text-signal cursor-pointer">OS Downloads</a></li>
+            <li><a href="$clean$h"  class="hover:text-signal cursor-pointer">Changelog &amp; Bounties</a></li>
           </ul>
         </div>
         <div>
           <div class="text-ink font-semibold mb-2.5">Resources</div>
           <ul class="space-y-2 text-slate">
-            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">Documentation &amp; CLI</a></li>
-            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">USB4 DMA Architecture</a></li>
-            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">Community Setups</a></li>
-            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">System Status &amp; Mirrors</a></li>
+            <li><a href="$clean$h"  class="hover:text-signal cursor-pointer">Documentation &amp; CLI</a></li>
+            <li><a href="$clean$h"  class="hover:text-signal cursor-pointer">USB4 DMA Architecture</a></li>
+            <li><a href="$clean$h"  class="hover:text-signal cursor-pointer">Community Setups</a></li>
+            <li><a href="$clean$h"  class="hover:text-signal cursor-pointer">System Status &amp; Mirrors</a></li>
           </ul>
         </div>
         <div>
           <div class="text-ink font-semibold mb-2.5">Company &amp; Trust</div>
           <ul class="space-y-2 text-slate">
-            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">About &amp; Hardware Labs</a></li>
-            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">WAF &amp; Edge Security</a></li>
-            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">Privacy Policy &amp; Terms</a></li>
-            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">Account &amp; Passkeys</a></li>
+            <li><a href="$clean$h"  class="hover:text-signal cursor-pointer">About &amp; Hardware Labs</a></li>
+            <li><a href="$clean$h"  class="hover:text-signal cursor-pointer">WAF &amp; Edge Security</a></li>
+            <li><a href="$clean$h"  class="hover:text-signal cursor-pointer">Privacy Policy &amp; Terms</a></li>
+            <li><a href="$clean$h"  class="hover:text-signal cursor-pointer">Account &amp; Passkeys</a></li>
           </ul>
         </div>
       </div>
@@ -619,7 +619,17 @@
       <span>© 2026 SyncDock Labs AG (Zürich &amp; San Francisco). All rights reserved.</span>
       <span>Local-First Sovereign Architecture · Zero Cloud Telemetry</span>
     </div>
-  </footer>
+  
+      <div class="mt-6 pt-6 border-t border-hairline flex flex-wrap items-center justify-between gap-3 text-xs text-slate">
+        <span>&#169; 2026 SyncDock Labs. All rights reserved.</span>
+        <div class="flex items-center gap-4">
+          <a href="mailto:hello@syncdock.tech" class="hover:text-ink">hello@syncdock.tech</a>
+          <a href="/legal" class="hover:text-ink">Privacy</a>
+          <a href="/legal" class="hover:text-ink">Terms</a>
+          <a href="/security" class="hover:text-ink">Security</a>
+        </div>
+      </div>
+</footer>
   </main>
 
   <div id="checkoutModal" class="fixed inset-0 z-50 bg-ink/75 backdrop-blur-sm hidden items-center justify-center p-4">

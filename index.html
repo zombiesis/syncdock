@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SyncDock (v0.9.4 Beta) — Local-First Spatial Device Dock & Conduit</title>
+  <title>SyncDock (v0.9.4 Beta) ï¿½ Local-First Spatial Device Dock & Conduit</title>
   <meta name="description" content="Anchor your desktop studio and handheld devices over a sub-millisecond USB4 DMA and Wi-Fi 7 NAN conduit. Zero cloud relays." />
-  <meta property="og:title" content="SyncDock — Tactile Cross-Device Workspace & Spatial Dock" />
+  <meta property="og:title" content="SyncDock ï¿½ Tactile Cross-Device Workspace & Spatial Dock" />
   <meta property="og:description" content="Bridge localhost ports, raw ProRes assets, clipboards, and Secure Enclave SSH keys in under 1 millisecond." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://syncdock.tech" />
@@ -263,6 +263,34 @@
     window.copyCustomToml = window.copyCustomToml || function() {};
     window.submitBetaBugReport = window.submitBetaBugReport || function() { return false; };
   </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "SyncDock",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "macOS, Windows, Linux, iOS, Android",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Zero-cloud peer-to-peer workspace dock bridging desktop studios and handheld OLED companions in under 1 millisecond via USB4 DMA and Wi-Fi 7 NAN.",
+    "url": "https://syncdock.tech",
+    "author": {
+      "@type": "Organization",
+      "name": "SyncDock Labs",
+      "email": "hello@syncdock.tech",
+      "url": "https://syncdock.tech"
+    },
+    "softwareVersion": "0.9.4-RC3",
+    "releaseNotes": "https://syncdock.tech/changelog",
+    "downloadUrl": "https://syncdock.tech/downloads",
+    "screenshot": "https://syncdock.tech/og-image.png",
+    "keywords": "USB4, DMA, cross-device, local-first, spatial dock, peer-to-peer, developer tools"
+  }
+  </script>
 </head>
 <body class="antialiased selection:bg-signal selection:text-white pb-24">
 
@@ -279,7 +307,7 @@
         <span class="text-stone/85 text-xs">
           Zero-copy USB4 DMA &amp; local TLS certificates are now live.
         </span>
-        <span class="hidden md:inline text-white/20">·</span>
+        <span class="hidden md:inline text-white/20">ï¿½</span>
         <span class="hidden md:inline font-mono text-[11px] text-stone/80">
           Founder Cohort: <strong id="betaSeatCounterTop" class="text-emerald-400">384 / 500 claimed</strong>
         </span>
@@ -318,7 +346,7 @@
 
     <div class="max-w-[1440px] mx-auto px-4 lg:px-8 h-16 flex items-center justify-between gap-4">
       <!-- Brand Identity -->
-      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="flex items-center gap-3 group text-left cursor-pointer shrink-0">
+      <a href="$clean$h"  class="flex items-center gap-3 group text-left cursor-pointer shrink-0">
         <div class="w-10 h-10 rounded-lg bg-ink text-paper flex items-center justify-center border border-ink relative overflow-hidden group-hover:border-signal transition-colors shadow-sm">
           <svg class="w-7 h-7" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g class="logo-coupler-pin logo-coupler-left">
@@ -343,12 +371,12 @@
 
       <!-- Primary Navigation Links -->
       <nav class="hidden lg:flex items-center gap-1 text-sm font-medium">
-        <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-overview" class="px-3.5 py-1.5 rounded-md bg-ink text-paper font-semibold transition-all flex items-center gap-1.5 cursor-pointer"><span>Product</span></a>
-        <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-workbench" class="px-3.5 py-1.5 rounded-md text-slate hover:text-ink hover:bg-stone/60 transition-all flex items-center gap-1.5 cursor-pointer"><span>Live Workbench</span><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span></a>
-        <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-pricing" class="px-3.5 py-1.5 rounded-md text-slate hover:text-ink hover:bg-stone/60 transition-all flex items-center gap-1.5 cursor-pointer"><span>Pricing</span></a>
-        <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-downloads" class="px-3.5 py-1.5 rounded-md text-slate hover:text-ink hover:bg-stone/60 transition-all flex items-center gap-1.5 cursor-pointer"><span>Downloads</span></a>
-        <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-docs" class="px-3.5 py-1.5 rounded-md text-slate hover:text-ink hover:bg-stone/60 transition-all flex items-center gap-1.5 cursor-pointer"><span>Documentation</span></a>
-        <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-community" class="px-3.5 py-1.5 rounded-md text-slate hover:text-ink hover:bg-stone/60 transition-all flex items-center gap-1.5 cursor-pointer"><span>Community</span></a>
+        <a href="$clean$h"  id="nav-tab-overview" class="px-3.5 py-1.5 rounded-md bg-ink text-paper font-semibold transition-all flex items-center gap-1.5 cursor-pointer"><span>Product</span></a>
+        <a href="$clean$h"  id="nav-tab-workbench" class="px-3.5 py-1.5 rounded-md text-slate hover:text-ink hover:bg-stone/60 transition-all flex items-center gap-1.5 cursor-pointer"><span>Live Workbench</span><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span></a>
+        <a href="$clean$h"  id="nav-tab-pricing" class="px-3.5 py-1.5 rounded-md text-slate hover:text-ink hover:bg-stone/60 transition-all flex items-center gap-1.5 cursor-pointer"><span>Pricing</span></a>
+        <a href="$clean$h"  id="nav-tab-downloads" class="px-3.5 py-1.5 rounded-md text-slate hover:text-ink hover:bg-stone/60 transition-all flex items-center gap-1.5 cursor-pointer"><span>Downloads</span></a>
+        <a href="$clean$h"  id="nav-tab-docs" class="px-3.5 py-1.5 rounded-md text-slate hover:text-ink hover:bg-stone/60 transition-all flex items-center gap-1.5 cursor-pointer"><span>Documentation</span></a>
+        <a href="$clean$h"  id="nav-tab-community" class="px-3.5 py-1.5 rounded-md text-slate hover:text-ink hover:bg-stone/60 transition-all flex items-center gap-1.5 cursor-pointer"><span>Community</span></a>
 
         <!-- Explore Mega-Menu Dropdown -->
         <div class="relative group">
@@ -359,7 +387,7 @@
           <div class="absolute left-0 top-full pt-2 w-72 hidden group-hover:block z-50">
             <div class="bg-surface border border-ink rounded-lg shadow-xl p-2 space-y-1 text-xs">
               
-              <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-studio" class="flex items-start gap-2.5 p-2 rounded hover:bg-stone/60 transition-colors">
+              <a href="$clean$h"  id="nav-tab-studio" class="flex items-start gap-2.5 p-2 rounded hover:bg-stone/60 transition-colors">
                 <i class="ph-bold ph-sliders-horizontal text-cobalt text-base mt-0.5"></i>
                 <div>
                   <div class="font-semibold text-ink">Visual .TOML Studio</div>
@@ -367,7 +395,7 @@
                 </div>
               </a>
               
-              <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-changelog" class="flex items-start gap-2.5 p-2 rounded hover:bg-stone/60 transition-colors">
+              <a href="$clean$h"  id="nav-tab-changelog" class="flex items-start gap-2.5 p-2 rounded hover:bg-stone/60 transition-colors">
                 <i class="ph-bold ph-git-commit text-signal text-base mt-0.5"></i>
                 <div>
                   <div class="font-semibold text-ink">Changelog &amp; Bug Bounty</div>
@@ -375,7 +403,7 @@
                 </div>
               </a>
               
-              <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-security" class="flex items-start gap-2.5 p-2 rounded hover:bg-stone/60 transition-colors">
+              <a href="$clean$h"  id="nav-tab-security" class="flex items-start gap-2.5 p-2 rounded hover:bg-stone/60 transition-colors">
                 <i class="ph-bold ph-shield-check text-forest text-base mt-0.5"></i>
                 <div>
                   <div class="font-semibold text-ink">WAF &amp; Edge Security</div>
@@ -383,15 +411,15 @@
                 </div>
               </a>
               
-              <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-about" class="flex items-start gap-2.5 p-2 rounded hover:bg-stone/60 transition-colors">
+              <a href="$clean$h"  id="nav-tab-about" class="flex items-start gap-2.5 p-2 rounded hover:bg-stone/60 transition-colors">
                 <i class="ph-bold ph-buildings text-amber text-base mt-0.5"></i>
                 <div>
                   <div class="font-semibold text-ink">About &amp; Hardware Labs</div>
-                  <div class="text-[11px] text-muted">Zürich &amp; SF benches, manifesto &amp; careers</div>
+                  <div class="text-[11px] text-muted">Zï¿½rich &amp; SF benches, manifesto &amp; careers</div>
                 </div>
               </a>
               
-              <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-status" class="flex items-start gap-2.5 p-2 rounded hover:bg-stone/60 transition-colors">
+              <a href="$clean$h"  id="nav-tab-status" class="flex items-start gap-2.5 p-2 rounded hover:bg-stone/60 transition-colors">
                 <i class="ph-bold ph-heartbeat text-emerald-600 text-base mt-0.5"></i>
                 <div>
                   <div class="font-semibold text-ink">System Status &amp; Mirrors</div>
@@ -399,7 +427,7 @@
                 </div>
               </a>
               
-              <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-legal" class="flex items-start gap-2.5 p-2 rounded hover:bg-stone/60 transition-colors">
+              <a href="$clean$h"  id="nav-tab-legal" class="flex items-start gap-2.5 p-2 rounded hover:bg-stone/60 transition-colors">
                 <i class="ph-bold ph-scales text-slate text-base mt-0.5"></i>
                 <div>
                   <div class="font-semibold text-ink">Trust Center &amp; Legal</div>
@@ -424,12 +452,12 @@
           <kbd class="px-1.5 py-0.5 text-[10px] rounded bg-surface border border-hairline">?K</kbd>
         </button>
 
-        <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="headerAuthStatusBtn" class="flex items-center gap-2 px-3.5 py-2 rounded-md text-xs font-medium bg-surface border border-hairline hover:border-ink transition-colors ">
+        <a href="$clean$h"  id="headerAuthStatusBtn" class="flex items-center gap-2 px-3.5 py-2 rounded-md text-xs font-medium bg-surface border border-hairline hover:border-ink transition-colors ">
           <span id="headerAuthDot" class="w-2 h-2 rounded-full bg-amber"></span>
           <span id="headerAuthLabel">Log in</span>
         </a>
 
-        <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="tactile-btn rounded-md bg-ink text-paper text-xs font-semibold px-4 py-2 border border-ink flex items-center gap-1.5 cursor-pointer">
+        <a href="$clean$h"  class="tactile-btn rounded-md bg-ink text-paper text-xs font-semibold px-4 py-2 border border-ink flex items-center gap-1.5 cursor-pointer">
           <span>Download</span>
           <i class="ph-bold ph-download-simple text-signal"></i>
         </a>
@@ -438,17 +466,17 @@
 
     <!-- Mobile Navigation Bar -->
     <div class="lg:hidden border-t border-hairline bg-stone/70 px-4 py-2 flex items-center gap-1.5 overflow-x-auto text-xs font-medium">
-      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="px-3 py-1 rounded bg-ink text-paper font-semibold shrink-0">Product</a>
-      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Workbench</a>
-      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Pricing</a>
-      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Downloads</a>
-      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Docs</a>
-      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Community</a>
-      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">TOML Studio</a>
-      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">About</a>
-      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Status</a>
-      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Legal</a>
-      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="px-3 py-1 rounded bg-signal text-white font-semibold shrink-0">Log in</a>
+      <a href="$clean$h"  class="px-3 py-1 rounded bg-ink text-paper font-semibold shrink-0">Product</a>
+      <a href="$clean$h"  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Workbench</a>
+      <a href="$clean$h"  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Pricing</a>
+      <a href="$clean$h"  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Downloads</a>
+      <a href="$clean$h"  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Docs</a>
+      <a href="$clean$h"  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Community</a>
+      <a href="$clean$h"  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">TOML Studio</a>
+      <a href="$clean$h"  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">About</a>
+      <a href="$clean$h"  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Status</a>
+      <a href="$clean$h"  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Legal</a>
+      <a href="$clean$h"  class="px-3 py-1 rounded bg-signal text-white font-semibold shrink-0">Log in</a>
     </div>
   </header>
 
@@ -463,8 +491,8 @@
     <div id="page-workbench" class="app-page-view">
       <div class="border-b border-hairline px-4 lg:px-8 py-3 flex flex-wrap items-center justify-between bg-stone/50 text-xs font-mono">
         <div class="flex items-center gap-2">
-          <span class="text-signal font-bold">[PAGE 00 // SYNCDOCK LIVE HARDWARE CONDUIT WORKBENCH — INTERACTIVE APP]</span>
-          <span class="text-muted hidden sm:inline">— DRAG &amp; DROP FILES, BEAM CLIPBOARDS, FORWARD LOCALHOST PORTS &amp; SIGN SSH KEYS</span>
+          <span class="text-signal font-bold">[PAGE 00 // SYNCDOCK LIVE HARDWARE CONDUIT WORKBENCH ï¿½ INTERACTIVE APP]</span>
+          <span class="text-muted hidden sm:inline">ï¿½ DRAG &amp; DROP FILES, BEAM CLIPBOARDS, FORWARD LOCALHOST PORTS &amp; SIGN SSH KEYS</span>
         </div>
         <div class="flex items-center gap-3">
           <span class="px-2 py-0.5 bg-forest/15 text-forest font-bold">? LINK ACTIVE: 40Gbps USB4 + Wi-Fi 7 NAN</span>
@@ -782,7 +810,7 @@
                   <span class="font-bold">PUBLIC BETA v0.9.4 LIVE ON SYNCDOCK.TECH</span>
                 </div>
                 <div class="inline-flex items-center gap-2 px-2.5 py-1 bg-stone border border-hairline text-[11px] font-mono uppercase tracking-wider text-slate">
-                  <span>macOS · Windows · Linux · iOS · Android</span>
+                  <span>macOS ï¿½ Windows ï¿½ Linux ï¿½ iOS ï¿½ Android</span>
                 </div>
               </div>
 
@@ -791,7 +819,7 @@
               </h1>
 
               <p class="mt-6 text-base sm:text-lg text-slate max-w-2xl leading-relaxed">
-                Stop emailing yourself screenshots, fighting flaky AirDrop queues, or configuring ngrok tunnels. <strong>SyncDock</strong> anchors a tactile hardware-grade dock to the edge of your monitor—bridging clipboards, live <code class="font-mono text-xs bg-stone px-1.5 py-0.5 border border-hairline text-ink">localhost</code> ports, raw assets, and multi-device window states in <span class="underline decoration-signal decoration-2 underline-offset-4">under 1 millisecond</span>.
+                Stop emailing yourself screenshots, fighting flaky AirDrop queues, or configuring ngrok tunnels. <strong>SyncDock</strong> anchors a tactile hardware-grade dock to the edge of your monitorï¿½bridging clipboards, live <code class="font-mono text-xs bg-stone px-1.5 py-0.5 border border-hairline text-ink">localhost</code> ports, raw assets, and multi-device window states in <span class="underline decoration-signal decoration-2 underline-offset-4">under 1 millisecond</span>.
               </p>
             </div>
 
@@ -865,13 +893,13 @@
             <div class="flex flex-wrap items-center gap-2 font-mono text-xs">
               <span class="text-muted mr-2">CAMERA RIG:</span>
               <button onclick="setStageCamera('iso')" id="cam-iso" class="cam-btn px-3 py-1.5 rounded bg-ink text-paper border border-ink font-semibold">
-                Isometric 32°
+                Isometric 32ï¿½
               </button>
               <button onclick="setStageCamera('front')" id="cam-front" class="cam-btn px-3 py-1.5 rounded bg-surface text-ink border border-hairline hover:border-ink">
-                Studio Front 0°
+                Studio Front 0ï¿½
               </button>
               <button onclick="setStageCamera('top')" id="cam-top" class="cam-btn px-3 py-1.5 rounded bg-surface text-ink border border-hairline hover:border-ink">
-                Top Schematic 58°
+                Top Schematic 58ï¿½
               </button>
               <button onclick="toggleStageExplode()" id="cam-explode" class="px-3 py-1.5 rounded bg-surface text-signal border border-signal font-semibold hover:bg-signal hover:text-white transition-colors">
                 Explode Z-Layers
@@ -884,7 +912,7 @@
 
             <div class="flex items-center gap-2 font-mono text-xs text-muted">
               <i class="ph-bold ph-hand-grabbing text-signal"></i>
-              <span>DRAG STAGE TO ORBIT · DROP ANY REAL FILE ON DESKTOP NODE</span>
+              <span>DRAG STAGE TO ORBIT ï¿½ DROP ANY REAL FILE ON DESKTOP NODE</span>
             </div>
           </div>
 
@@ -907,7 +935,7 @@
                       <span class="w-3 h-3 rounded-full bg-[#FF5F56] border border-black/10 inline-block"></span>
                       <span class="w-3 h-3 rounded-full bg-[#FFBD2E] border border-black/10 inline-block"></span>
                       <span class="w-3 h-3 rounded-full bg-[#27C93F] border border-black/10 inline-block"></span>
-                      <span class="ml-2 font-mono text-xs font-semibold text-ink">MacBook Pro (M4 Max) — syncdockd</span>
+                      <span class="ml-2 font-mono text-xs font-semibold text-ink">MacBook Pro (M4 Max) ï¿½ syncdockd</span>
                     </div>
                     <span class="px-2 py-0.5 rounded bg-stone font-mono text-[11px] text-slate">m4.local.syncdock.tech</span>
                   </div>
@@ -922,10 +950,10 @@
                       <i class="ph-bold ph-file-arrow-up text-signal text-base"></i>
                       <div>
                         <span class="font-semibold text-ink">Drop any real file here to hash &amp; beam</span>
-                        <span id="stageDroppedFileMeta" class="block font-mono text-[10px] text-muted">Web Crypto SHA-256 · 1.48 GB/s DMA calculation</span>
+                        <span id="stageDroppedFileMeta" class="block font-mono text-[10px] text-muted">Web Crypto SHA-256 ï¿½ 1.48 GB/s DMA calculation</span>
                       </div>
                     </div>
-                    <span class="px-2 py-1 rounded bg-surface border border-hairline font-mono text-[10px] font-semibold text-ink">Browse…</span>
+                    <span class="px-2 py-1 rounded bg-surface border border-hairline font-mono text-[10px] font-semibold text-ink">Browseï¿½</span>
                   </div>
 
                   <!-- 4 Interactive Payload Cards -->
@@ -977,7 +1005,7 @@
 
                   <div class="mt-4 pt-3 border-t border-hairline flex items-center justify-between font-mono text-[10px] text-muted">
                     <span>Right Bezel Magnet: Locked</span>
-                    <span class="text-forest font-bold">? 14.2 MB RAM · 0.0% Idle CPU</span>
+                    <span class="text-forest font-bold">? 14.2 MB RAM ï¿½ 0.0% Idle CPU</span>
                   </div>
                 </div>
 
@@ -1076,7 +1104,7 @@
         <div class="border-b border-hairline px-4 lg:px-8 py-3 flex flex-wrap items-center justify-between bg-stone/50 text-xs font-mono">
           <div class="flex items-center gap-2">
             <span class="text-signal font-bold">[02 // SCROLL-DRIVEN PROTOCOL DISASSEMBLY]</span>
-            <span class="text-muted hidden sm:inline">— INTERACTIVE 4-LAYER KERNEL ARCHITECTURE</span>
+            <span class="text-muted hidden sm:inline">ï¿½ INTERACTIVE 4-LAYER KERNEL ARCHITECTURE</span>
           </div>
           <div class="flex items-center gap-3">
             <span class="text-muted">EXPLOSION VECTOR: <strong id="scrollCadPercent" class="text-signal">35%</strong></span>
@@ -1095,7 +1123,7 @@
                 Engineered like a <span class="font-serif italic font-normal text-signal">machined coupler</span>, not a web wrapper.
               </h2>
               <p class="mt-3 text-sm sm:text-base text-slate leading-relaxed">
-                As you scroll down this schematic (or drag the manual caliper), inspect how SyncDock’s four isolated architectural planes separate to route raw memory buffers from desktop silicon to mobile glass without touching a cloud relay.
+                As you scroll down this schematic (or drag the manual caliper), inspect how SyncDockï¿½s four isolated architectural planes separate to route raw memory buffers from desktop silicon to mobile glass without touching a cloud relay.
               </p>
 
               <div class="mt-6 space-y-2.5 font-mono text-xs">
@@ -1134,7 +1162,7 @@
             </div>
 
             <div class="mt-6 pt-4 border-t border-hairline flex items-center justify-between font-mono text-[11px] text-muted">
-              <span>CAD TOLERANCE: ±0.002mm</span>
+              <span>CAD TOLERANCE: ï¿½0.002mm</span>
               <span class="text-ink font-bold">RUST NO_STD KERNEL</span>
             </div>
           </div>
@@ -1200,7 +1228,7 @@
         <div class="border-b border-hairline px-4 lg:px-8 py-3 flex flex-wrap items-center justify-between bg-stone/50 text-xs font-mono">
           <div class="flex items-center gap-2">
             <span class="text-signal font-bold">[03 // HOT-SWAPPABLE WORKSPACE CARTRIDGES]</span>
-            <span class="text-muted hidden sm:inline">— MORPH DESKTOP + HANDHELD CONTEXT IN 150MS</span>
+            <span class="text-muted hidden sm:inline">ï¿½ MORPH DESKTOP + HANDHELD CONTEXT IN 150MS</span>
           </div>
           <span class="text-muted">ACTIVE SLOT: <strong id="activeCartridgeHeaderLabel" class="text-ink">FULLSTACK_DEV_01</strong></span>
         </div>
@@ -1312,7 +1340,7 @@ haptic_detents  = true</pre>
         <div class="border-b border-hairline px-4 lg:px-8 py-3 flex flex-wrap items-center justify-between bg-stone/50 text-xs font-mono">
           <div class="flex items-center gap-2">
             <span class="text-signal font-bold">[04 // REAL-TIME LATENCY &amp; JITTER OSCILLOSCOPE]</span>
-            <span class="text-muted hidden sm:inline">— EMPIRICAL TRANSFER BENCHMARK (2.4 GB PAYLOAD · 1000 HZ CAPTURE)</span>
+            <span class="text-muted hidden sm:inline">ï¿½ EMPIRICAL TRANSFER BENCHMARK (2.4 GB PAYLOAD ï¿½ 1000 HZ CAPTURE)</span>
           </div>
           <span class="text-muted">SAMPLE RATE: <strong class="text-ink">1000 HZ LAB CAPTURE</strong></span>
         </div>
@@ -1389,7 +1417,7 @@ haptic_detents  = true</pre>
                 <span id="scopeActiveTitle" class="font-bold text-white">CH1: SYNCDOCK P2P CONDUIT</span>
               </div>
               <div class="flex items-center gap-4 text-[11px]">
-                <span>P99 JITTER: <strong id="scopeJitterValue" class="text-emerald-400">±0.09 ms</strong></span>
+                <span>P99 JITTER: <strong id="scopeJitterValue" class="text-emerald-400">ï¿½0.09 ms</strong></span>
                 <span>THROUGHPUT: <strong id="scopeThroughputValue" class="text-signal">1.48 GB/s</strong></span>
               </div>
             </div>
@@ -1399,7 +1427,7 @@ haptic_detents  = true</pre>
             <div class="my-6 relative border border-white/20 bg-[#0A0C0A] p-2">
               <canvas id="oscilloscopeCanvas" class="w-full h-[250px] block cursor-crosshair"></canvas>
               <div class="absolute top-3 left-3 font-mono text-[10px] text-emerald-400/80 pointer-events-none">
-                TIME/DIV: 2.0ms · VOLT/DIV: 100mV · RINGBUFFER DMA
+                TIME/DIV: 2.0ms ï¿½ VOLT/DIV: 100mV ï¿½ RINGBUFFER DMA
               </div>
               <div id="scopeHoverReadout" class="absolute top-3 right-3 font-mono text-[10px] px-2 py-0.5 bg-black/80 border border-white/15 text-signal pointer-events-none">
                 PROBE: HOVER WAVEFORM FOR SAMPLE TELEMETRY
@@ -1431,7 +1459,7 @@ haptic_detents  = true</pre>
         <div class="border-b border-hairline px-4 lg:px-8 py-3 flex flex-wrap items-center justify-between bg-stone/50 text-xs font-mono">
           <div class="flex items-center gap-2">
             <span class="text-signal font-bold">[05 // WORKSPACE CONSOLIDATION &amp; OPTICAL LOUPE]</span>
-            <span class="text-muted hidden sm:inline">— DRAG SLIDER TO COMPARE · HOVER PHOTOS FOR 2.5X CAD LOUPE</span>
+            <span class="text-muted hidden sm:inline">ï¿½ DRAG SLIDER TO COMPARE ï¿½ HOVER PHOTOS FOR 2.5X CAD LOUPE</span>
           </div>
           <span class="text-muted">OPTICS: <strong class="text-ink">LEICA-CALIBRATED LOUPE</strong></span>
         </div>
@@ -1459,7 +1487,7 @@ haptic_detents  = true</pre>
             <div class="absolute inset-0 bg-[#231F1E] text-paper p-6 sm:p-10 flex flex-col justify-between">
               <div class="flex items-center justify-between border-b border-white/15 pb-3 font-mono text-xs">
                 <span class="px-2 py-0.5 bg-red-600 text-white font-bold">LEGACY WORKFLOW // FRAGMENTED CHAOS</span>
-                <span class="text-red-400">6 DONGLE CABLES · 4 CLOUD TABS · 14 MIN LOST/HR</span>
+                <span class="text-red-400">6 DONGLE CABLES ï¿½ 4 CLOUD TABS ï¿½ 14 MIN LOST/HR</span>
               </div>
 
               <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-auto">
@@ -1487,13 +1515,13 @@ haptic_detents  = true</pre>
             <div id="comparisonClipLayer" class="absolute inset-0 bg-paper text-ink p-6 sm:p-10 flex flex-col justify-between border-r-4 border-signal" style="clip-path: polygon(0 0, 62% 0, 62% 100%, 0 100%);">
               <div class="flex items-center justify-between border-b border-hairline pb-3 font-mono text-xs">
                 <span class="px-2 py-0.5 bg-forest text-white font-bold">SYNCDOCK v0.9.4 // SINGLE MAGNETIC CONDUIT</span>
-                <span class="text-forest font-bold">0.8ms LOCAL MESH · ZERO CLOUD RELAY</span>
+                <span class="text-forest font-bold">0.8ms LOCAL MESH ï¿½ ZERO CLOUD RELAY</span>
               </div>
 
               <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-auto">
                 <div class="p-4 bg-surface border-2 border-ink font-mono text-xs shadow-sm">
                   <div class="text-forest font-bold mb-1">? 1.48 GB/s Direct Flick</div>
-                  <p class="text-[11px] text-slate">Drag any raw video, APK/IPA, or Figma frame across the screen edge—instant arrival.</p>
+                  <p class="text-[11px] text-slate">Drag any raw video, APK/IPA, or Figma frame across the screen edgeï¿½instant arrival.</p>
                 </div>
                 <div class="p-4 bg-surface border-2 border-ink font-mono text-xs shadow-sm">
                   <div class="text-cobalt font-bold mb-1">? Auto-Mounted Localhost</div>
@@ -1526,7 +1554,7 @@ haptic_detents  = true</pre>
           <article class="p-6 sm:p-8 flex flex-col justify-between bg-paper">
             <div>
               <div class="flex items-center justify-between font-mono text-[11px] text-muted mb-3">
-                <span>FIG 2.1 — DESKTOP ANCHOR (HOVER LOUPE)</span>
+                <span>FIG 2.1 ï¿½ DESKTOP ANCHOR (HOVER LOUPE)</span>
                 <span class="text-ink font-bold">0.0% CPU IDLE</span>
               </div>
               <div class="loupe-container overflow-hidden border-2 border-ink bg-[#121312] mb-5 aspect-[4/3] relative cursor-crosshair select-none" onmousemove="moveOpticalLoupe(event, this)">
@@ -1580,7 +1608,7 @@ haptic_detents  = true</pre>
           <article class="p-6 sm:p-8 flex flex-col justify-between bg-paper">
             <div>
               <div class="flex items-center justify-between font-mono text-[11px] text-muted mb-3">
-                <span>FIG 2.2 — TACTILE COMPANION (HOVER LOUPE)</span>
+                <span>FIG 2.2 ï¿½ TACTILE COMPANION (HOVER LOUPE)</span>
                 <span class="text-ink font-bold">OLED HAPTICS</span>
               </div>
               <div class="loupe-container overflow-hidden border-2 border-ink bg-[#121312] mb-5 aspect-[4/3] relative cursor-crosshair select-none" onmousemove="moveOpticalLoupe(event, this)">
@@ -1596,7 +1624,7 @@ haptic_detents  = true</pre>
                     <circle cx="200" cy="145" r="34" fill="#1B4DFF" fill-opacity="0.25" stroke="#38BDF8" stroke-width="1.5"/>
                     <path d="M40 145 L95 145 L110 110 L125 180 L140 95 L155 195 L170 120 L185 170 L200 145 L360 145" stroke="#34D399" stroke-width="2" fill="none"/>
                     <text x="34" y="42" fill="#38BDF8" font-family="JetBrains Mono" font-size="9" font-weight="bold">BRAUN_DETENT_PROFILE // 160HZ IMPULSE</text>
-                    <text x="34" y="252" fill="#F6F5F0" font-family="JetBrains Mono" font-size="8">CORE_HAPTICS_LRA: 0.42ms RISE TIME · 120HZ OLED</text>
+                    <text x="34" y="252" fill="#F6F5F0" font-family="JetBrains Mono" font-size="8">CORE_HAPTICS_LRA: 0.42ms RISE TIME ï¿½ 120HZ OLED</text>
                   </svg>
                 </div>
                 <div class="loupe-lens bg-[#101824] overflow-hidden">
@@ -1608,7 +1636,7 @@ haptic_detents  = true</pre>
               </div>
               <h3 class="font-display font-bold text-xl text-ink">Physical Haptic Detents</h3>
               <p class="mt-2 text-sm text-slate leading-relaxed">
-                Every file flick or port mount triggers a calibrated mechanical click on your iPhone’s Taptic Engine and MacBook Force Touch trackpad—giving digital transfers tangible weight.
+                Every file flick or port mount triggers a calibrated mechanical click on your iPhoneï¿½s Taptic Engine and MacBook Force Touch trackpadï¿½giving digital transfers tangible weight.
               </p>
             </div>
             <div class="mt-6 pt-3 border-t border-hairline font-mono text-[11px] text-muted flex justify-between">
@@ -1621,7 +1649,7 @@ haptic_detents  = true</pre>
           <article class="p-6 sm:p-8 flex flex-col justify-between bg-paper">
             <div>
               <div class="flex items-center justify-between font-mono text-[11px] text-muted mb-3">
-                <span>FIG 2.3 — HARDWARE ENCLAVE (HOVER LOUPE)</span>
+                <span>FIG 2.3 ï¿½ HARDWARE ENCLAVE (HOVER LOUPE)</span>
                 <span class="text-ink font-bold">AIR-GAPPED READY</span>
               </div>
               <div class="loupe-container overflow-hidden border-2 border-ink bg-[#121312] mb-5 aspect-[4/3] relative cursor-crosshair select-none" onmousemove="moveOpticalLoupe(event, this)">
@@ -1678,7 +1706,7 @@ haptic_detents  = true</pre>
         <div class="border-b border-hairline px-4 lg:px-8 py-3 flex flex-wrap items-center justify-between bg-stone/50 text-xs font-mono">
           <div class="flex items-center gap-2">
             <span class="text-signal font-bold">[06 // PUBLIC BETA v0.9.4 FOUNDER PASS GENERATOR]</span>
-            <span class="text-muted hidden sm:inline">— MINT YOUR SERIALIZED HARDWARE LICENSE &amp; CLI TOKEN</span>
+            <span class="text-muted hidden sm:inline">ï¿½ MINT YOUR SERIALIZED HARDWARE LICENSE &amp; CLI TOKEN</span>
           </div>
           <span class="text-muted">REMAINING BETA ALLOCATION: <strong id="betaRemainingReadout" class="text-signal">116 / 500</strong></span>
         </div>
@@ -1688,13 +1716,13 @@ haptic_detents  = true</pre>
           <div class="lg:col-span-6 p-6 sm:p-10 lg:p-12 border-b lg:border-b-0 lg:border-r border-hairline flex flex-col justify-between">
             <div>
               <div class="inline-flex items-center gap-2 px-2.5 py-1 bg-signal/10 border border-signal text-signal font-mono text-[11px] font-bold uppercase mb-4">
-                <span>FREE DURING PUBLIC BETA · LOCKS IN 50% LIFETIME DISCOUNT</span>
+                <span>FREE DURING PUBLIC BETA ï¿½ LOCKS IN 50% LIFETIME DISCOUNT</span>
               </div>
               <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight text-ink">
                 Mint your serialized <span class="font-serif italic font-normal text-signal">Beta Founder Pass</span>.
               </h2>
               <p class="mt-3 text-sm text-slate leading-relaxed">
-                Enter your engineering handle and select your primary desktop + handheld node pairing. We’ll generate a custom serialized Beta Founder Pass on <code class="font-mono text-xs bg-stone px-1">syncdock.tech</code> with an instant CLI pairing token.
+                Enter your engineering handle and select your primary desktop + handheld node pairing. Weï¿½ll generate a custom serialized Beta Founder Pass on <code class="font-mono text-xs bg-stone px-1">syncdock.tech</code> with an instant CLI pairing token.
               </p>
 
               <div class="mt-6 space-y-4 font-mono text-xs">
@@ -1744,7 +1772,7 @@ haptic_detents  = true</pre>
             </div>
 
             <div id="passMintConfirmation" class="mt-6 p-3 bg-forest/10 border border-forest text-forest font-mono text-xs hidden">
-              ? SLOT RESERVED — Run <code class="font-bold">syncdock auth --token <span id="mintedTokenInline">SD-BETA-9042-ZRH</span></code>
+              ? SLOT RESERVED ï¿½ Run <code class="font-bold">syncdock auth --token <span id="mintedTokenInline">SD-BETA-9042-ZRH</span></code>
             </div>
           </div>
 
@@ -1820,7 +1848,7 @@ haptic_detents  = true</pre>
         <div class="border-b border-hairline px-4 lg:px-8 py-3 flex flex-wrap items-center justify-between bg-stone/50 text-xs font-mono">
           <div class="flex items-center gap-2">
             <span class="text-cobalt font-bold">[07 // LIVE ULTRASONIC AUDIO CHIRP &amp; EPHEMERAL QR PAIRING SIMULATOR]</span>
-            <span class="text-muted hidden sm:inline">— ZERO-ACCOUNT X25519 HARDWARE KEY EXCHANGE</span>
+            <span class="text-muted hidden sm:inline">ï¿½ ZERO-ACCOUNT X25519 HARDWARE KEY EXCHANGE</span>
           </div>
           <span class="text-muted">CARRIER FREQ: <strong class="text-ink">18.4 kHz NEAR-ULTRASONIC 4-GFSK</strong></span>
         </div>
@@ -1899,7 +1927,7 @@ haptic_detents  = true</pre>
       <div class="border-b border-hairline px-4 lg:px-8 py-3 flex flex-wrap items-center justify-between bg-stone/50 text-xs font-mono">
         <div class="flex items-center gap-2">
           <span class="text-signal font-bold">[PAGE 02 // SYNCDOCK.TECH PRICING &amp; SOVEREIGN LICENSING]</span>
-          <span class="text-muted hidden sm:inline">— ALL PLANS $0 DURING PUBLIC BETA v0.9.4</span>
+          <span class="text-muted hidden sm:inline">ï¿½ ALL PLANS $0 DURING PUBLIC BETA v0.9.4</span>
         </div>
         <span class="text-forest font-bold">? FOUNDER COHORT LOCKS 50% LIFETIME DISCOUNT</span>
       </div>
@@ -1909,13 +1937,13 @@ haptic_detents  = true</pre>
         <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
           <div>
             <div class="inline-flex items-center gap-2 px-2.5 py-1 bg-signal text-white font-mono text-[11px] font-bold uppercase mb-4">
-              <span>BETA EARLY-BIRD GUARANTEE: $0 TODAY · NO CREDIT CARD REQUIRED</span>
+              <span>BETA EARLY-BIRD GUARANTEE: $0 TODAY ï¿½ NO CREDIT CARD REQUIRED</span>
             </div>
             <h1 class="font-display font-bold text-4xl sm:text-5xl tracking-tight text-ink">
               Honest licensing for <span class="font-serif italic font-normal text-signal">local-first</span> hardware tools.
             </h1>
             <p class="mt-3 text-base text-slate max-w-2xl leading-relaxed">
-              Because SyncDock runs 100% peer-to-peer on your own hardware without burning cloud relay bandwidth, we don’t charge per-gigabyte fees. Claim your Beta license today for $0 and lock in 50% off v1.0 GA—or buy a perpetual offline binary license.
+              Because SyncDock runs 100% peer-to-peer on your own hardware without burning cloud relay bandwidth, we donï¿½t charge per-gigabyte fees. Claim your Beta license today for $0 and lock in 50% off v1.0 GAï¿½or buy a perpetual offline binary license.
             </p>
           </div>
 
@@ -2119,9 +2147,9 @@ haptic_detents  = true</pre>
       <div class="border-b border-hairline px-4 lg:px-8 py-3 flex flex-wrap items-center justify-between bg-stone/50 text-xs font-mono">
         <div class="flex items-center gap-2">
           <span class="text-signal font-bold">[PAGE 03 // SYNCDOCK.TECH NATIVE BINARIES &amp; OS MATRIX]</span>
-          <span class="text-muted hidden sm:inline">— RELEASE BUILD 2026.11.04-RC3 (SIGNED &amp; NOTARIZED)</span>
+          <span class="text-muted hidden sm:inline">ï¿½ RELEASE BUILD 2026.11.04-RC3 (SIGNED &amp; NOTARIZED)</span>
         </div>
-        <span class="text-forest font-bold">? ZERO ELECTRON · 100% NATIVE RUST &amp; METAL</span>
+        <span class="text-forest font-bold">? ZERO ELECTRON ï¿½ 100% NATIVE RUST &amp; METAL</span>
       </div>
 
       <div class="p-6 sm:p-10 lg:p-12 border-b border-hairline bg-paper">
@@ -2264,7 +2292,7 @@ haptic_detents  = true</pre>
       <div class="border-b border-hairline px-4 lg:px-8 py-3 flex flex-wrap items-center justify-between bg-stone/50 text-xs font-mono">
         <div class="flex items-center gap-2">
           <span class="text-signal font-bold">[PAGE 04 // SYNCDOCK.TECH ENGINEERING MANUAL &amp; SYSTEMS ARCHITECTURE]</span>
-          <span class="text-muted hidden sm:inline">— CARTRIDGE SCHEMA, KERNEL DMA RESEARCH &amp; DAEMON CLI SPEC</span>
+          <span class="text-muted hidden sm:inline">ï¿½ CARTRIDGE SCHEMA, KERNEL DMA RESEARCH &amp; DAEMON CLI SPEC</span>
         </div>
         <span class="text-ink font-bold">DOCS REV: v0.9.4-RC3</span>
       </div>
@@ -2334,7 +2362,7 @@ haptic_detents  = true</pre>
       <div class="border-b border-hairline px-4 lg:px-8 py-3 flex flex-wrap items-center justify-between bg-stone/50 text-xs font-mono">
         <div class="flex items-center gap-2">
           <span class="text-signal font-bold">[PAGE 05 // SYNCDOCK.TECH PUBLIC BETA LAB &amp; CHANGELOG]</span>
-          <span class="text-muted hidden sm:inline">— KERNEL COMMIT LOG &amp; ROADMAP TO v1.0 GA</span>
+          <span class="text-muted hidden sm:inline">ï¿½ KERNEL COMMIT LOG &amp; ROADMAP TO v1.0 GA</span>
         </div>
         <span class="text-ink font-bold">HEAD: 2026.11.04-RC3</span>
       </div>
@@ -2345,7 +2373,7 @@ haptic_detents  = true</pre>
             Public Beta <span class="font-serif italic font-normal text-signal">Changelog</span> &amp; Kernel Roadmap.
           </h1>
           <p class="mt-3 text-base text-slate">
-            We ship signed release candidates every Wednesday from our Zürich and San Francisco hardware benches. Inspect what shipped in `v0.9.4-RC3` and submit bug bounty telemetry below.
+            We ship signed release candidates every Wednesday from our Zï¿½rich and San Francisco hardware benches. Inspect what shipped in `v0.9.4-RC3` and submit bug bounty telemetry below.
           </p>
         </div>
 
@@ -2360,9 +2388,9 @@ haptic_detents  = true</pre>
               <span class="text-muted">NOV 04, 2026</span>
             </div>
             <ul class="space-y-2 text-slate font-sans text-sm">
-              <li>• Added automatic local Root CA provisioning so `https://*.local.syncdock.tech` resolves on paired iOS/Android devices with zero browser certificate warnings.</li>
-              <li>• Reduced idle macOS M4 Metal overlay memory footprint from 21.4 MB to <strong>14.2 MB RAM</strong>.</li>
-              <li>• Fixed an AWDL channel-hopping jitter spike by pinning Wi-Fi 7 NAN Discovery Windows to Channel 149 / 6GHz PSC alongside 2.4 GB ProRes DMA transfers.</li>
+              <li>ï¿½ Added automatic local Root CA provisioning so `https://*.local.syncdock.tech` resolves on paired iOS/Android devices with zero browser certificate warnings.</li>
+              <li>ï¿½ Reduced idle macOS M4 Metal overlay memory footprint from 21.4 MB to <strong>14.2 MB RAM</strong>.</li>
+              <li>ï¿½ Fixed an AWDL channel-hopping jitter spike by pinning Wi-Fi 7 NAN Discovery Windows to Channel 149 / 6GHz PSC alongside 2.4 GB ProRes DMA transfers.</li>
             </ul>
           </div>
 
@@ -2375,8 +2403,8 @@ haptic_detents  = true</pre>
               <span class="text-muted">OCT 18, 2026</span>
             </div>
             <ul class="space-y-2 text-slate font-sans text-sm">
-              <li>• Introduced biometric SSH &amp; Git commit signing using the iPhone 16 Pro Secure Enclave piped directly into desktop `SSH_AUTH_SOCK`.</li>
-              <li>• Added Hyprland &amp; Sway Wayland layer-shell edge magnet support on Linux.</li>
+              <li>ï¿½ Introduced biometric SSH &amp; Git commit signing using the iPhone 16 Pro Secure Enclave piped directly into desktop `SSH_AUTH_SOCK`.</li>
+              <li>ï¿½ Added Hyprland &amp; Sway Wayland layer-shell edge magnet support on Linux.</li>
             </ul>
           </div>
         </div>
@@ -2388,7 +2416,7 @@ haptic_detents  = true</pre>
             <span class="px-2 py-0.5 bg-ink text-paper font-bold">EARN FREE LIFETIME PRO HARDWARE KEY</span>
           </div>
           <p class="text-sm text-slate mb-5">
-            Found an edge-case jitter spike on Wayland, WSL2, or iOS 18? Submit a bug report or feature request below—it dispatches directly through the configured <code class="font-mono text-xs bg-surface px-1 border border-hairline">syncdock.tech</code> SMTP relay and logs to the active session board.
+            Found an edge-case jitter spike on Wayland, WSL2, or iOS 18? Submit a bug report or feature request belowï¿½it dispatches directly through the configured <code class="font-mono text-xs bg-surface px-1 border border-hairline">syncdock.tech</code> SMTP relay and logs to the active session board.
           </p>
 
           <form onsubmit="return submitBetaBugReport(event)" class="grid grid-cols-1 md:grid-cols-12 gap-4 font-mono text-xs">
@@ -2435,7 +2463,7 @@ haptic_detents  = true</pre>
       <div class="border-b border-hairline px-4 lg:px-8 py-3 flex flex-wrap items-center justify-between bg-stone/50 text-xs font-mono">
         <div class="flex items-center gap-2">
           <span class="text-cobalt font-bold">[PAGE 06 // VISUAL .SYNCDOCK.TOML CARTRIDGE BUILDER &amp; EXPORTER]</span>
-          <span class="text-muted hidden sm:inline">— DESIGN, MOUNT &amp; DOWNLOAD CUSTOM MULTI-DEVICE WORKSPACE PROFILES</span>
+          <span class="text-muted hidden sm:inline">ï¿½ DESIGN, MOUNT &amp; DOWNLOAD CUSTOM MULTI-DEVICE WORKSPACE PROFILES</span>
         </div>
         <span class="text-forest font-bold">? VALIDATED SCHEMA v0.9.4</span>
       </div>
@@ -2446,7 +2474,7 @@ haptic_detents  = true</pre>
           <div>
             <span class="text-cobalt font-bold uppercase text-[11px]">INTERACTIVE WORKSPACE ARCHITECT</span>
             <h1 class="font-display font-bold text-3xl sm:text-4xl text-ink font-sans mt-1">
-              Build your repo’s <span class="font-serif italic font-normal text-signal">.syncdock.toml</span> cartridge.
+              Build your repoï¿½s <span class="font-serif italic font-normal text-signal">.syncdock.toml</span> cartridge.
             </h1>
             <p class="text-xs text-slate font-sans mt-1.5 leading-relaxed">
               Toggle your desktop apps, localhost ports, magnetic bezel edge, and handheld companion mode below. Download the generated `.syncdock.toml` file or mount it directly into the live Cartridge Deck.
@@ -2561,7 +2589,7 @@ haptic_detents  = true</pre>
       <div class="border-b border-hairline px-4 lg:px-8 py-3 flex flex-wrap items-center justify-between bg-stone/50 text-xs font-mono">
         <div class="flex items-center gap-2">
           <span class="text-signal font-bold">[PAGE 07 // SYNCDOCK.TECH WAF, RATE-LIMITING &amp; TAMPER PROTECTION]</span>
-          <span class="text-muted hidden sm:inline">— DEFEND AGAINST XSS, SQLI, BRUTE-FORCE &amp; SCRAPING</span>
+          <span class="text-muted hidden sm:inline">ï¿½ DEFEND AGAINST XSS, SQLI, BRUTE-FORCE &amp; SCRAPING</span>
         </div>
         <span id="wafStatusBannerRight" class="text-forest font-bold">? WAF SHIELD: ACTIVE (3 RULES ARMED)</span>
       </div>
@@ -2690,7 +2718,7 @@ add_header Content-Security-Policy "default-src 'self' https:; script-src 'self'
     <div id="page-community-old" class="app-page-view" style="display:none"><div class="border-b border-hairline px-4 lg:px-8 py-3 flex flex-wrap items-center justify-between bg-stone/50 text-xs font-mono">
         <div class="flex items-center gap-2">
           <span class="text-signal font-bold">COMMUNITY &amp; OPEN ECOSYSTEM</span>
-          <span class="text-muted hidden sm:inline">— 14,800+ GITHUB STARS · 6,400+ DISCORD HARDWARE BUILDERS</span>
+          <span class="text-muted hidden sm:inline">ï¿½ 14,800+ GITHUB STARS ï¿½ 6,400+ DISCORD HARDWARE BUILDERS</span>
         </div>
         <div class="flex items-center gap-4">
           <a href="#studio" onclick="return switchPage('studio', false)" class="text-cobalt hover:underline">Share a .syncdock.toml Cartridge ?</a>
@@ -2709,13 +2737,13 @@ add_header Content-Security-Policy "default-src 'self' https:; script-src 'self'
               Where multi-device builders share <span class="font-serif italic font-normal text-signal">benches &amp; cartridges</span>.
             </h1>
             <p class="mt-3 text-base text-slate max-w-2xl leading-relaxed">
-              SyncDock’s core wire protocol, Wayland layer-shell integration, and repository cartridges are shaped directly by our community on GitHub, Discord, X, Mastodon, and Bluesky.
+              SyncDockï¿½s core wire protocol, Wayland layer-shell integration, and repository cartridges are shaped directly by our community on GitHub, Discord, X, Mastodon, and Bluesky.
             </p>
           </div>
 
           <!-- Direct Social Channel Cards -->
           <div class="lg:col-span-5 grid grid-cols-2 gap-3">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="p-4 bg-surface border-2 border-ink hover:border-signal transition-all group">
+            <a href="https://github.com/zombiesis/syncdock" target="_blank" rel="noopener noreferrer" class="p-4 bg-surface border-2 border-ink hover:border-signal transition-all group">
               <div class="flex items-center justify-between">
                 <i class="ph-fill ph-github-logo text-2xl text-ink group-hover:text-signal"></i>
                 <span class="font-mono text-xs px-2 py-0.5 bg-stone font-bold">14,842 ?</span>
@@ -2733,7 +2761,7 @@ add_header Content-Security-Policy "default-src 'self' https:; script-src 'self'
               <p class="text-xs text-slate mt-0.5">#kernel-rust, #macos-metal &amp; #show-your-dock</p>
             </a>
 
-            <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="p-4 bg-surface border border-hairline hover:border-ink transition-all group">
+            <a href="https://x.com/syncdock" target="_blank" rel="noopener noreferrer" class="p-4 bg-surface border border-hairline hover:border-ink transition-all group">
               <div class="flex items-center justify-between">
                 <i class="ph-fill ph-x-logo text-xl text-ink"></i>
                 <span class="font-mono text-[11px] text-muted">@syncdock</span>
@@ -2778,7 +2806,7 @@ add_header Content-Security-Policy "default-src 'self' https:; script-src 'self'
                   <div class="w-9 h-9 rounded-full bg-ink text-paper font-mono text-xs font-bold flex items-center justify-center">MK</div>
                   <div>
                     <div class="font-display font-bold text-sm text-ink">Marek Kowalski</div>
-                    <div class="font-mono text-[11px] text-muted">@mkowalski_sys · Principal Systems Eng</div>
+                    <div class="font-mono text-[11px] text-muted">@mkowalski_sys ï¿½ Principal Systems Eng</div>
                   </div>
                 </div>
                 <i class="ph-fill ph-x-logo text-base text-ink"></i>
@@ -2788,8 +2816,8 @@ add_header Content-Security-Policy "default-src 'self' https:; script-src 'self'
               </p>
             </div>
             <div class="mt-4 pt-3 border-t border-hairline flex items-center justify-between font-mono text-[11px] text-muted">
-              <span>Nov 2, 2026 · Zürich</span>
-              <span class="text-ink font-semibold">? 418 · ? 64</span>
+              <span>Nov 2, 2026 ï¿½ Zï¿½rich</span>
+              <span class="text-ink font-semibold">? 418 ï¿½ ? 64</span>
             </div>
           </article>
 
@@ -2801,7 +2829,7 @@ add_header Content-Security-Policy "default-src 'self' https:; script-src 'self'
                   <div class="w-9 h-9 rounded-full bg-cobalt text-white font-mono text-xs font-bold flex items-center justify-center">SL</div>
                   <div>
                     <div class="font-display font-bold text-sm text-ink">Soren Lindqvist</div>
-                    <div class="font-mono text-[11px] text-muted">@soren@fosstodon.org · Wayland Maintainer</div>
+                    <div class="font-mono text-[11px] text-muted">@soren@fosstodon.org ï¿½ Wayland Maintainer</div>
                   </div>
                 </div>
                 <i class="ph-fill ph-mastodon-logo text-base text-[#6364FF]"></i>
@@ -2811,8 +2839,8 @@ add_header Content-Security-Policy "default-src 'self' https:; script-src 'self'
               </p>
             </div>
             <div class="mt-4 pt-3 border-t border-hairline flex items-center justify-between font-mono text-[11px] text-muted">
-              <span>Nov 3, 2026 · Stockholm</span>
-              <span class="text-ink font-semibold">? 295 · Boosts 89</span>
+              <span>Nov 3, 2026 ï¿½ Stockholm</span>
+              <span class="text-ink font-semibold">? 295 ï¿½ Boosts 89</span>
             </div>
           </article>
 
@@ -2824,7 +2852,7 @@ add_header Content-Security-Policy "default-src 'self' https:; script-src 'self'
                   <div class="w-9 h-9 rounded-full bg-signal text-white font-mono text-xs font-bold flex items-center justify-center">CH</div>
                   <div>
                     <div class="font-display font-bold text-sm text-ink">Claire Hashimoto</div>
-                    <div class="font-mono text-[11px] text-muted">@claireh.bsky.social · Staff Design Eng</div>
+                    <div class="font-mono text-[11px] text-muted">@claireh.bsky.social ï¿½ Staff Design Eng</div>
                   </div>
                 </div>
                 <i class="ph-fill ph-butterfly text-base text-sky-500"></i>
@@ -2834,8 +2862,8 @@ add_header Content-Security-Policy "default-src 'self' https:; script-src 'self'
               </p>
             </div>
             <div class="mt-4 pt-3 border-t border-hairline flex items-center justify-between font-mono text-[11px] text-muted">
-              <span>Nov 4, 2026 · Tokyo</span>
-              <span class="text-ink font-semibold">? 512 · ? 71</span>
+              <span>Nov 4, 2026 ï¿½ Tokyo</span>
+              <span class="text-ink font-semibold">? 512 ï¿½ ? 71</span>
             </div>
           </article>
         </div>
@@ -2850,10 +2878,10 @@ add_header Content-Security-Policy "default-src 'self' https:; script-src 'self'
             <div class="p-4 bg-surface border-2 border-ink flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div>
                 <div class="flex items-center gap-2">
-                  <span class="font-display font-bold text-base text-ink">Zürich Audio DSP Bench</span>
+                  <span class="font-display font-bold text-base text-ink">Zï¿½rich Audio DSP Bench</span>
                   <span class="px-2 py-0.5 bg-stone font-mono text-[10px]">by @lukas_dsp</span>
                 </div>
-                <p class="text-xs text-slate mt-1">Mac Studio M2 Ultra + 2× iPad Pro M4 (120Hz Metal Oscilloscope HUD) + Teenage Engineering TX-6</p>
+                <p class="text-xs text-slate mt-1">Mac Studio M2 Ultra + 2ï¿½ iPad Pro M4 (120Hz Metal Oscilloscope HUD) + Teenage Engineering TX-6</p>
               </div>
               <button type="button" onclick="switchPage('studio', false)" class="px-3 py-1.5 bg-ink text-paper font-mono text-xs font-bold shrink-0 hover:bg-signal transition-colors">
                 Inspect TOML ?
@@ -2911,10 +2939,10 @@ add_header Content-Security-Policy "default-src 'self' https:; script-src 'self'
          =================================================================== -->
     <div id="page-about-old" class="app-page-view" style="display:none"><div class="border-b border-hairline px-4 lg:px-8 py-3 flex flex-wrap items-center justify-between bg-stone/50 text-xs font-mono">
         <div class="flex items-center gap-2">
-          <span class="text-signal font-bold">ABOUT SYNCDOCK INC. // ZÜRICH &amp; SAN FRANCISCO</span>
-          <span class="text-muted hidden sm:inline">— INDUSTRIAL SOFTWARE CRAFTSMANSHIP</span>
+          <span class="text-signal font-bold">ABOUT SYNCDOCK INC. // Zï¿½RICH &amp; SAN FRANCISCO</span>
+          <span class="text-muted hidden sm:inline">ï¿½ INDUSTRIAL SOFTWARE CRAFTSMANSHIP</span>
         </div>
-        <span class="text-ink font-bold">FOUNDED 2024 · INDEPENDENT &amp; PROFITABLE</span>
+        <span class="text-ink font-bold">FOUNDED 2024 ï¿½ INDEPENDENT &amp; PROFITABLE</span>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 border-b border-hairline">
@@ -2925,10 +2953,10 @@ add_header Content-Security-Policy "default-src 'self' https:; script-src 'self'
           </h1>
           <div class="mt-6 space-y-4 text-base text-slate leading-relaxed">
             <p>
-              Every day, millions of engineers and designers sit with a supercomputer laptop and a 120Hz OLED phone physically touching on the same desk—yet moving a 2GB build, inspecting a <code class="font-mono text-xs bg-stone px-1 text-ink">localhost:3000</code> checkout sheet, or sharing an SSH signature still routes through sluggish cloud relays, expired reverse tunnels, or flaky consumer Bluetooth queues.
+              Every day, millions of engineers and designers sit with a supercomputer laptop and a 120Hz OLED phone physically touching on the same deskï¿½yet moving a 2GB build, inspecting a <code class="font-mono text-xs bg-stone px-1 text-ink">localhost:3000</code> checkout sheet, or sharing an SSH signature still routes through sluggish cloud relays, expired reverse tunnels, or flaky consumer Bluetooth queues.
             </p>
             <p>
-              We started <strong>SyncDock</strong> in Zürich with a simple conviction: software that couples physical devices should be engineered with the same tolerances as a Leica lens mount or a Braun hardware instrument. No Electron bloat, no mandatory cloud accounts, and zero telemetry.
+              We started <strong>SyncDock</strong> in Zï¿½rich with a simple conviction: software that couples physical devices should be engineered with the same tolerances as a Leica lens mount or a Braun hardware instrument. No Electron bloat, no mandatory cloud accounts, and zero telemetry.
             </p>
           </div>
 
@@ -2956,15 +2984,15 @@ add_header Content-Security-Policy "default-src 'self' https:; script-src 'self'
             <div class="space-y-4">
               <div class="p-4 bg-surface border-2 border-ink">
                 <div class="flex justify-between font-mono text-xs">
-                  <strong class="text-ink">LAB 01 // ZÜRICH (LIMMATQUAI)</strong>
-                  <span class="text-forest font-bold">47.3769° N</span>
+                  <strong class="text-ink">LAB 01 // Zï¿½RICH (LIMMATQUAI)</strong>
+                  <span class="text-forest font-bold">47.3769ï¿½ N</span>
                 </div>
                 <p class="text-xs text-slate mt-1.5">Rust kernel transport, USB4 PCIe logic analyzers, RF Faraday cage &amp; acoustic GFSK calibration.</p>
               </div>
               <div class="p-4 bg-surface border-2 border-ink">
                 <div class="flex justify-between font-mono text-xs">
                   <strong class="text-ink">LAB 02 // SAN FRANCISCO (DOGPATCH)</strong>
-                  <span class="text-cobalt font-bold">37.7599° N</span>
+                  <span class="text-cobalt font-bold">37.7599ï¿½ N</span>
                 </div>
                 <p class="text-xs text-slate mt-1.5">Metal 3 &amp; Vulkan 120Hz compositors, CoreHaptics detent tuning &amp; iOS/Android companion apps.</p>
               </div>
@@ -2974,8 +3002,8 @@ add_header Content-Security-Policy "default-src 'self' https:; script-src 'self'
           <div class="mt-8 p-4 bg-ink text-paper border border-ink font-mono text-xs">
             <div class="text-signal font-bold uppercase mb-1">OPEN ENGINEERING ROLES</div>
             <ul class="space-y-1.5 text-[11px] text-stone/85">
-              <li class="flex justify-between"><span>• Staff Rust Kernel Engineer (USB4 / io_uring)</span> <span class="text-emerald-400">ZRH / Remote</span></li>
-              <li class="flex justify-between"><span>• Metal / Wayland Compositor Engineer</span> <span class="text-emerald-400">SFO / ZRH</span></li>
+              <li class="flex justify-between"><span>ï¿½ Staff Rust Kernel Engineer (USB4 / io_uring)</span> <span class="text-emerald-400">ZRH / Remote</span></li>
+              <li class="flex justify-between"><span>ï¿½ Metal / Wayland Compositor Engineer</span> <span class="text-emerald-400">SFO / ZRH</span></li>
             </ul>
           </div>
         </div>
@@ -3006,7 +3034,7 @@ add_header Content-Security-Policy "default-src 'self' https:; script-src 'self'
               <strong class="text-ink">macOS Homebrew Tap &amp; Notarization CDN</strong>
               <span class="px-2 py-0.5 bg-forest/15 text-forest font-bold">100% ONLINE (12ms)</span>
             </div>
-            <div class="text-[11px] text-muted mb-3">brew.syncdock.tech · Apple Developer ID G2 Stapler</div>
+            <div class="text-[11px] text-muted mb-3">brew.syncdock.tech ï¿½ Apple Developer ID G2 Stapler</div>
             <div class="grid grid-cols-12 gap-1 h-3">
               <div class="bg-forest col-span-12 rounded-sm"></div>
             </div>
@@ -3017,7 +3045,7 @@ add_header Content-Security-Policy "default-src 'self' https:; script-src 'self'
               <strong class="text-ink">Linux APT / RPM / AUR &amp; Nix Binary Cache</strong>
               <span class="px-2 py-0.5 bg-forest/15 text-forest font-bold">100% ONLINE (9ms)</span>
             </div>
-            <div class="text-[11px] text-muted mb-3">apt.syncdock.tech · cache.syncdock.tech</div>
+            <div class="text-[11px] text-muted mb-3">apt.syncdock.tech ï¿½ cache.syncdock.tech</div>
             <div class="grid grid-cols-12 gap-1 h-3">
               <div class="bg-forest col-span-12 rounded-sm"></div>
             </div>
@@ -3028,7 +3056,7 @@ add_header Content-Security-Policy "default-src 'self' https:; script-src 'self'
               <strong class="text-ink">Offline Air-Gapped GPG Keyserver (0x884FA29C)</strong>
               <span class="px-2 py-0.5 bg-forest/15 text-forest font-bold">VERIFIED</span>
             </div>
-            <div class="text-[11px] text-muted mb-3">keys.syncdock.tech · Reproducible Build Attestation</div>
+            <div class="text-[11px] text-muted mb-3">keys.syncdock.tech ï¿½ Reproducible Build Attestation</div>
             <div class="grid grid-cols-12 gap-1 h-3">
               <div class="bg-forest col-span-12 rounded-sm"></div>
             </div>
@@ -3130,7 +3158,7 @@ add_header Content-Security-Policy "default-src 'self' https:; script-src 'self'
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label class="block text-[10px] uppercase text-muted mb-1">PASSWORD (MIN 6 CHARS) *</label>
-                  <input id="signupPasswordInput" type="password" required minlength="6" placeholder="••••••••••••" class="w-full px-3 py-2.5 bg-surface border border-ink text-ink focus:outline-none focus:ring-2 focus:ring-signal" />
+                  <input id="signupPasswordInput" type="password" required minlength="6" placeholder="ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" class="w-full px-3 py-2.5 bg-surface border border-ink text-ink focus:outline-none focus:ring-2 focus:ring-signal" />
                 </div>
                 <div>
                   <label class="block text-[10px] uppercase text-muted mb-1">PRIMARY OS STACK</label>
@@ -3172,7 +3200,7 @@ add_header Content-Security-Policy "default-src 'self' https:; script-src 'self'
 
               <div>
                 <label class="block text-[10px] uppercase text-muted mb-1">PASSWORD *</label>
-                <input id="loginPasswordInput" type="password" required value="demo123" placeholder="••••••••••••" class="w-full px-3 py-2.5 bg-surface border border-ink text-ink focus:outline-none focus:ring-2 focus:ring-signal" />
+                <input id="loginPasswordInput" type="password" required value="demo123" placeholder="ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" class="w-full px-3 py-2.5 bg-surface border border-ink text-ink focus:outline-none focus:ring-2 focus:ring-signal" />
               </div>
 
               <div class="pt-2 flex flex-wrap items-center gap-3">
@@ -3405,17 +3433,17 @@ add_header Content-Security-Policy "default-src 'self' https:; script-src 'self'
                   <div class="w-9 h-9 rounded-full bg-ink text-paper font-display font-bold text-xs flex items-center justify-center">MK</div>
                   <div>
                     <div class="font-semibold text-sm text-ink">Marek Kowalski</div>
-                    <div class="font-mono text-[11px] text-muted">@marek_graphics · X</div>
+                    <div class="font-mono text-[11px] text-muted">@marek_graphics ï¿½ X</div>
                   </div>
                 </div>
                 <i class="ph-bold ph-x-logo text-base text-ink"></i>
               </div>
               <p class="text-sm text-slate leading-relaxed">
-                Replaced our entire mobile QA rack’s flaky ngrok + AirDrop scripts with <code class="font-mono text-xs bg-stone px-1">@syncdock</code>. Streaming a 120Hz Metal viewport from an M4 Max to an iPhone 16 Pro and Pixel 9 simultaneously with 0.7ms jitter feels like witchcraft.
+                Replaced our entire mobile QA rackï¿½s flaky ngrok + AirDrop scripts with <code class="font-mono text-xs bg-stone px-1">@syncdock</code>. Streaming a 120Hz Metal viewport from an M4 Max to an iPhone 16 Pro and Pixel 9 simultaneously with 0.7ms jitter feels like witchcraft.
               </p>
             </div>
             <div class="mt-4 pt-3 border-t border-hairline flex items-center justify-between font-mono text-[11px] text-muted">
-              <span>Nov 2, 2026 · Zürich</span>
+              <span>Nov 2, 2026 ï¿½ Zï¿½rich</span>
               <span class="text-signal font-semibold">? 418</span>
             </div>
           </article>
@@ -3437,7 +3465,7 @@ add_header Content-Security-Policy "default-src 'self' https:; script-src 'self'
               </p>
             </div>
             <div class="mt-4 pt-3 border-t border-hairline flex items-center justify-between font-mono text-[11px] text-muted">
-              <span>Nov 3, 2026 · Taipei</span>
+              <span>Nov 3, 2026 ï¿½ Taipei</span>
               <span class="text-cobalt font-semibold">? 194 Boosts</span>
             </div>
           </article>
@@ -3459,7 +3487,7 @@ add_header Content-Security-Policy "default-src 'self' https:; script-src 'self'
               </p>
             </div>
             <div class="mt-4 pt-3 border-t border-hairline flex items-center justify-between font-mono text-[11px] text-muted">
-              <span>Nov 4, 2026 · San Francisco</span>
+              <span>Nov 4, 2026 ï¿½ San Francisco</span>
               <span class="text-forest font-semibold">? 312</span>
             </div>
           </article>
@@ -3474,9 +3502,9 @@ add_header Content-Security-Policy "default-src 'self' https:; script-src 'self'
       <div class="border-b border-hairline px-4 lg:px-8 py-3 flex flex-wrap items-center justify-between bg-stone/40 text-xs">
         <div class="flex items-center gap-2">
           <span class="px-2 py-0.5 rounded bg-surface border border-hairline font-mono text-[11px] font-semibold text-ink">About SyncDock Labs</span>
-          <span class="text-slate hidden sm:inline">Zürich · San Francisco · Tokyo Hardware Engineering Benches</span>
+          <span class="text-slate hidden sm:inline">Zï¿½rich ï¿½ San Francisco ï¿½ Tokyo Hardware Engineering Benches</span>
         </div>
-        <span class="font-mono text-[11px] text-muted">Founded 2024 · Independent &amp; Profitable</span>
+        <span class="font-mono text-[11px] text-muted">Founded 2024 ï¿½ Independent &amp; Profitable</span>
       </div>
 
       <div class="p-6 sm:p-10 lg:p-12 bg-paper space-y-10">
@@ -3485,15 +3513,15 @@ add_header Content-Security-Policy "default-src 'self' https:; script-src 'self'
             Software should feel as immediate as a <span class="font-serif italic font-normal text-signal">machined patch bay</span>.
           </h1>
           <p class="mt-4 text-base text-slate leading-relaxed">
-            We started SyncDock in Zürich after growing frustrated that sending a 2 GB video build or localhost port to a phone sitting three inches from our laptop required bouncing encrypted packets off a data center 4,000 kilometers away. We build local-first systems software in Rust, Metal, and Vulkan.
+            We started SyncDock in Zï¿½rich after growing frustrated that sending a 2 GB video build or localhost port to a phone sitting three inches from our laptop required bouncing encrypted packets off a data center 4,000 kilometers away. We build local-first systems software in Rust, Metal, and Vulkan.
           </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div class="p-6 rounded-xl bg-surface border border-hairline">
-            <div class="font-mono text-xs text-signal font-bold uppercase mb-2">Zürich Lab (HQ)</div>
+            <div class="font-mono text-xs text-signal font-bold uppercase mb-2">Zï¿½rich Lab (HQ)</div>
             <h3 class="font-display font-bold text-xl text-ink">Kernel &amp; Cryptography</h3>
-            <p class="text-xs text-slate mt-2 leading-relaxed">Hardturmstrasse 161, 8005 Zürich. Home to our Rust `no_std` ringbuffer team, acoustic GFSK DSP chamber, and offline GPG signing vault.</p>
+            <p class="text-xs text-slate mt-2 leading-relaxed">Hardturmstrasse 161, 8005 Zï¿½rich. Home to our Rust `no_std` ringbuffer team, acoustic GFSK DSP chamber, and offline GPG signing vault.</p>
           </div>
           <div class="p-6 rounded-xl bg-surface border border-hairline">
             <div class="font-mono text-xs text-cobalt font-bold uppercase mb-2">San Francisco Bench</div>
@@ -3525,7 +3553,7 @@ add_header Content-Security-Policy "default-src 'self' https:; script-src 'self'
         <div class="max-w-2xl">
           <h1 class="font-display font-bold text-3xl sm:text-4xl text-ink">Infrastructure &amp; Mirror Telemetry</h1>
           <p class="text-sm text-slate mt-2">
-            Because SyncDock’s runtime is 100% peer-to-peer on your local hardware, your workspace never goes down even if our website is unreachable. Below is the live status of our package distribution mirrors.
+            Because SyncDockï¿½s runtime is 100% peer-to-peer on your local hardware, your workspace never goes down even if our website is unreachable. Below is the live status of our package distribution mirrors.
           </p>
         </div>
 
@@ -3533,14 +3561,14 @@ add_header Content-Security-Policy "default-src 'self' https:; script-src 'self'
           <div class="p-4 rounded-lg bg-surface border border-hairline flex items-center justify-between">
             <div>
               <div class="font-bold text-ink">Homebrew Cask &amp; Bottle CDN (ZRH / SFO)</div>
-              <div class="text-[11px] text-muted mt-0.5">cdn.syncdock.tech · TLS 1.3</div>
+              <div class="text-[11px] text-muted mt-0.5">cdn.syncdock.tech ï¿½ TLS 1.3</div>
             </div>
             <span class="px-2.5 py-1 rounded bg-forest/15 text-forest font-bold">Operational (11ms)</span>
           </div>
           <div class="p-4 rounded-lg bg-surface border border-hairline flex items-center justify-between">
             <div>
               <div class="font-bold text-ink">APT / RPM / AUR Linux Package Mirrors</div>
-              <div class="text-[11px] text-muted mt-0.5">pkg.syncdock.tech · SHA-256 Verified</div>
+              <div class="text-[11px] text-muted mt-0.5">pkg.syncdock.tech ï¿½ SHA-256 Verified</div>
             </div>
             <span class="px-2.5 py-1 rounded bg-forest/15 text-forest font-bold">Operational (14ms)</span>
           </div>
@@ -3623,10 +3651,10 @@ add_header Content-Security-Policy "default-src 'self' https:; script-src 'self'
           Engineered with tactile precision for software craftspeople, industrial designers, and multi-device builders. Zero cloud lock-in.
         </p>
         <div class="mt-4 flex items-center gap-3 text-slate">
-          <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  title="GitHub" class="hover:text-ink"><i class="ph-fill ph-github-logo text-lg"></i></a>
-          <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  title="X / Twitter" class="hover:text-ink"><i class="ph-bold ph-x-logo text-lg"></i></a>
-          <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  title="Discord" class="hover:text-ink"><i class="ph-fill ph-discord-logo text-lg"></i></a>
-          <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  title="Mastodon" class="hover:text-ink"><i class="ph-fill ph-mastodon-logo text-lg"></i></a>
+          <a href="https://github.com/zombiesis/syncdock" target="_blank" rel="noopener noreferrer" title="GitHub" class="hover:text-ink"><i class="ph-fill ph-github-logo text-lg"></i></a>
+          <a href="https://x.com/syncdock" target="_blank" rel="noopener noreferrer" title="X / Twitter" class="hover:text-ink"><i class="ph-bold ph-x-logo text-lg"></i></a>
+          <a href="https://discord.gg/syncdock" target="_blank" rel="noopener noreferrer" title="Discord" class="hover:text-ink"><i class="ph-fill ph-discord-logo text-lg"></i></a>
+          <a href="https://mastodon.social/@syncdock" target="_blank" rel="noopener noreferrer" title="Mastodon" class="hover:text-ink"><i class="ph-fill ph-mastodon-logo text-lg"></i></a>
         </div>
       </div>
 
@@ -3634,40 +3662,50 @@ add_header Content-Security-Policy "default-src 'self' https:; script-src 'self'
         <div>
           <div class="text-ink font-semibold mb-2.5">Product &amp; Tools</div>
           <ul class="space-y-2 text-slate">
-            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">Product Overview</a></li>
-            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer font-semibold text-ink">Live Conduit Workbench</a></li>
-            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">Visual .TOML Studio</a></li>
-            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">Pricing &amp; Licensing</a></li>
-            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">OS Downloads</a></li>
-            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">Changelog &amp; Bounties</a></li>
+            <li><a href="$clean$h"  class="hover:text-signal cursor-pointer">Product Overview</a></li>
+            <li><a href="$clean$h"  class="hover:text-signal cursor-pointer font-semibold text-ink">Live Conduit Workbench</a></li>
+            <li><a href="$clean$h"  class="hover:text-signal cursor-pointer">Visual .TOML Studio</a></li>
+            <li><a href="$clean$h"  class="hover:text-signal cursor-pointer">Pricing &amp; Licensing</a></li>
+            <li><a href="$clean$h"  class="hover:text-signal cursor-pointer">OS Downloads</a></li>
+            <li><a href="$clean$h"  class="hover:text-signal cursor-pointer">Changelog &amp; Bounties</a></li>
           </ul>
         </div>
         <div>
           <div class="text-ink font-semibold mb-2.5">Resources</div>
           <ul class="space-y-2 text-slate">
-            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">Documentation &amp; CLI</a></li>
-            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">USB4 DMA Architecture</a></li>
-            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">Community Setups</a></li>
-            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">System Status &amp; Mirrors</a></li>
+            <li><a href="$clean$h"  class="hover:text-signal cursor-pointer">Documentation &amp; CLI</a></li>
+            <li><a href="$clean$h"  class="hover:text-signal cursor-pointer">USB4 DMA Architecture</a></li>
+            <li><a href="$clean$h"  class="hover:text-signal cursor-pointer">Community Setups</a></li>
+            <li><a href="$clean$h"  class="hover:text-signal cursor-pointer">System Status &amp; Mirrors</a></li>
           </ul>
         </div>
         <div>
           <div class="text-ink font-semibold mb-2.5">Company &amp; Trust</div>
           <ul class="space-y-2 text-slate">
-            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">About &amp; Hardware Labs</a></li>
-            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">WAF &amp; Edge Security</a></li>
-            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">Privacy Policy &amp; Terms</a></li>
-            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">Account &amp; Passkeys</a></li>
+            <li><a href="$clean$h"  class="hover:text-signal cursor-pointer">About &amp; Hardware Labs</a></li>
+            <li><a href="$clean$h"  class="hover:text-signal cursor-pointer">WAF &amp; Edge Security</a></li>
+            <li><a href="$clean$h"  class="hover:text-signal cursor-pointer">Privacy Policy &amp; Terms</a></li>
+            <li><a href="$clean$h"  class="hover:text-signal cursor-pointer">Account &amp; Passkeys</a></li>
           </ul>
         </div>
       </div>
     </div>
 
     <div class="pt-6 flex flex-wrap items-center justify-between gap-4 font-mono text-[11px] text-muted">
-      <span>© 2026 SyncDock Labs AG (Zürich &amp; San Francisco). All rights reserved.</span>
-      <span>Local-First Sovereign Architecture · Zero Cloud Telemetry</span>
+      <span>ï¿½ 2026 SyncDock Labs AG (Zï¿½rich &amp; San Francisco). All rights reserved.</span>
+      <span>Local-First Sovereign Architecture ï¿½ Zero Cloud Telemetry</span>
     </div>
-  </footer>
+  
+      <div class="mt-6 pt-6 border-t border-hairline flex flex-wrap items-center justify-between gap-3 text-xs text-slate">
+        <span>&#169; 2026 SyncDock Labs. All rights reserved.</span>
+        <div class="flex items-center gap-4">
+          <a href="mailto:hello@syncdock.tech" class="hover:text-ink">hello@syncdock.tech</a>
+          <a href="/legal" class="hover:text-ink">Privacy</a>
+          <a href="/legal" class="hover:text-ink">Terms</a>
+          <a href="/security" class="hover:text-ink">Security</a>
+        </div>
+      </div>
+</footer>
 
   </main>
 
@@ -3689,7 +3727,7 @@ add_header Content-Security-Policy "default-src 'self' https:; script-src 'self'
           <div>
             <label class="block font-mono text-[10px] uppercase text-muted mb-1">Selected Tier</label>
             <select id="checkoutPlanSelect" onchange="recalculateCheckoutTotal()" class="w-full px-3 py-2 rounded bg-surface border border-ink font-semibold text-ink">
-              <option value="pro_annual">Pro Workbench — Annual ($9/mo at GA)</option>
+              <option value="pro_annual">Pro Workbench ï¿½ Annual ($9/mo at GA)</option>
               <option value="pro_perpetual">Pro Perpetual Offline Binary ($89 once)</option>
               <option value="team_pilot">Team &amp; Air-Gap Lab ($22/seat)</option>
               <option value="solo_free">Solo Craftsperson ($0 Forever)</option>
@@ -3788,7 +3826,7 @@ add_header Content-Security-Policy "default-src 'self' https:; script-src 'self'
       <div class="bg-[#0F100F] text-paper border-2 border-ink p-4 font-mono text-xs">
         <div id="cliTerminalOutput" class="h-48 overflow-y-auto space-y-1.5 text-[11px] leading-relaxed pr-1">
           <div class="text-stone/60">SyncDock Kernel Daemon v0.9.4-RC3 (aarch64-apple-darwin / io_uring)</div>
-          <div class="text-emerald-400">? Enclave X25519 Ringbuffer online · 14.2 MB RSS · 0.0% idle CPU</div>
+          <div class="text-emerald-400">? Enclave X25519 Ringbuffer online ï¿½ 14.2 MB RSS ï¿½ 0.0% idle CPU</div>
           <div class="text-stone/80">Type a command below or click a preset above (try <span class="text-signal">syncdock bench --dma</span>):</div>
         </div>
         <form onsubmit="return handleTerminalInputSubmit(event)" class="mt-3 pt-2 border-t border-white/15 flex items-center gap-2">
@@ -4037,15 +4075,15 @@ add_header Content-Security-Policy "default-src 'self' https:; script-src 'self'
     function applyStageRealFileToHandheld(fileMeta, fromRemote = false) {
       const metaLabel = document.getElementById('stageDroppedFileMeta');
       if (metaLabel) {
-        metaLabel.textContent = `${fileMeta.name} (${fileMeta.sizeFormatted}) · SHA256: ${fileMeta.sha256.slice(0, 12)}…`;
+        metaLabel.textContent = `${fileMeta.name} (${fileMeta.sizeFormatted}) ï¿½ SHA256: ${fileMeta.sha256.slice(0, 12)}ï¿½`;
       }
       document.getElementById('bridgeActiveLabel').textContent = `DMA: ${fileMeta.name}`;
       document.getElementById('bridgeLatencyBadge').textContent = `${fileMeta.dmaMs}ms`;
       document.getElementById('mobileBadgeType').textContent = 'Real Zero-Copy File Drop';
       document.getElementById('mobileSpeedTag').textContent = `${fileMeta.dmaMs} ms DMA`;
       document.getElementById('mobileStageTitle').textContent = `${fileMeta.name} (${fileMeta.sizeFormatted})`;
-      document.getElementById('mobileStageDesc').textContent = `MIME: ${fileMeta.type}. Verified Web Crypto SHA-256 digest (${fileMeta.sha256.slice(0, 16)}…) streamed directly to handheld storage.`;
-      document.getElementById('mobileFooterMeta').textContent = `? SHA256: ${fileMeta.sha256.slice(0, 10)}…`;
+      document.getElementById('mobileStageDesc').textContent = `MIME: ${fileMeta.type}. Verified Web Crypto SHA-256 digest (${fileMeta.sha256.slice(0, 16)}ï¿½) streamed directly to handheld storage.`;
+      document.getElementById('mobileFooterMeta').textContent = `? SHA256: ${fileMeta.sha256.slice(0, 10)}ï¿½`;
       document.getElementById('livePacketLogText').textContent = `[REAL FILE DMA] ${fileMeta.name} (${fileMeta.sizeFormatted}) transferred in ${fileMeta.dmaMs}ms`;
 
       if (!fromRemote) {
@@ -4126,7 +4164,7 @@ add_header Content-Security-Policy "default-src 'self' https:; script-src 'self'
 # Build: v0.9.4-RC3 (2026.11.04-RC3)
 # Artifact: ${filename}
 # SHA256: ${sha}
-# GPG Signer: 0x884FA29C (SyncDock Release Authority Zürich)
+# GPG Signer: 0x884FA29C (SyncDock Release Authority Zï¿½rich)
 
 curl -fSL "https://cdn.syncdock.tech/releases/v0.9.4-rc3/${filename}" -o "${filename}"
 echo "${sha}  ${filename}" | shasum -a 256 -c -
@@ -4152,7 +4190,7 @@ echo "${sha}  ${filename}" | shasum -a 256 -c -
     const docTopicsData = {
       quickstart: `
         <div class="inline-flex items-center gap-2 px-2 py-0.5 bg-stone border border-hairline font-mono text-[10px] mb-3">
-          <span>SYNCDOCK.TECH/DOCS/QUICKSTART · REV 4.2</span>
+          <span>SYNCDOCK.TECH/DOCS/QUICKSTART ï¿½ REV 4.2</span>
         </div>
         <h1 class="font-display font-bold text-3xl sm:text-4xl text-ink">
           60-Second CLI Quickstart &amp; Ultrasonic GFSK Handshake
@@ -4174,24 +4212,24 @@ echo "${sha}  ${filename}" | shasum -a 256 -c -
           <div class="p-5 bg-surface border-2 border-ink">
             <div class="font-mono text-xs font-bold text-ink mb-2">ACOUSTIC + OPTICAL PAIRING SPEC</div>
             <ul class="space-y-2 text-xs text-slate">
-              <li><strong>• Carrier Band:</strong> 17.6 kHz – 19.2 kHz 4-tone GFSK (inaudible to most adults, captured by standard 48kHz MEMS mobile microphones).</li>
-              <li><strong>• Payload Frame:</strong> 256-bit X25519 ephemeral pubkey + 32-bit CRC + link-local IPv6 Thunderbolt/NAN bootstrap descriptor.</li>
-              <li><strong>• Time-to-Lock:</strong> 380 ms acoustic decode + 420 ms QUIC 0-RTT mutual attestation.</li>
+              <li><strong>ï¿½ Carrier Band:</strong> 17.6 kHz ï¿½ 19.2 kHz 4-tone GFSK (inaudible to most adults, captured by standard 48kHz MEMS mobile microphones).</li>
+              <li><strong>ï¿½ Payload Frame:</strong> 256-bit X25519 ephemeral pubkey + 32-bit CRC + link-local IPv6 Thunderbolt/NAN bootstrap descriptor.</li>
+              <li><strong>ï¿½ Time-to-Lock:</strong> 380 ms acoustic decode + 420 ms QUIC 0-RTT mutual attestation.</li>
             </ul>
           </div>
 
           <div class="p-5 bg-surface border-2 border-ink">
             <div class="font-mono text-xs font-bold text-ink mb-2">ZERO-TRUST SECURITY GUARANTEES</div>
             <ul class="space-y-2 text-xs text-slate">
-              <li><strong>• Ephemeral Keys:</strong> Session keys rotate every 15 minutes via hardware RNG with Perfect Forward Secrecy (PFS).</li>
-              <li><strong>• No WAN Egress:</strong> The daemon binds strictly to Thunderbolt bridge (<code>bridge100</code>) and Wi-Fi Aware link-local interfaces (<code>fe80::/10</code>).</li>
-              <li><strong>• Biometric Gate:</strong> Sensitive SSH/GPG signing requests require physical FaceID/TouchID confirmation on the handheld screen.</li>
+              <li><strong>ï¿½ Ephemeral Keys:</strong> Session keys rotate every 15 minutes via hardware RNG with Perfect Forward Secrecy (PFS).</li>
+              <li><strong>ï¿½ No WAN Egress:</strong> The daemon binds strictly to Thunderbolt bridge (<code>bridge100</code>) and Wi-Fi Aware link-local interfaces (<code>fe80::/10</code>).</li>
+              <li><strong>ï¿½ Biometric Gate:</strong> Sensitive SSH/GPG signing requests require physical FaceID/TouchID confirmation on the handheld screen.</li>
             </ul>
           </div>
         </div>`,
       toml: `
         <div class="inline-flex items-center gap-2 px-2 py-0.5 bg-stone border border-hairline font-mono text-[10px] mb-3">
-          <span>SYNCDOCK.TECH/DOCS/TOML-SCHEMA · CRDT v2</span>
+          <span>SYNCDOCK.TECH/DOCS/TOML-SCHEMA ï¿½ CRDT v2</span>
         </div>
         <h1 class="font-display font-bold text-3xl sm:text-4xl text-ink">Workspace Cartridge Schema (.syncdock.toml)</h1>
         <p class="mt-3 text-sm sm:text-base text-slate leading-relaxed">
@@ -4223,7 +4261,7 @@ storybook = { port = 6006, color_profile = "DisplayP3_Uncompressed" }</pre>
         </div>`,
       usb4_dma: `
         <div class="inline-flex items-center gap-2 px-2 py-0.5 bg-stone border border-hairline font-mono text-[10px] mb-3">
-          <span>SYNCDOCK.TECH/DOCS/USB4-DMA · KERNEL ARCHITECTURE</span>
+          <span>SYNCDOCK.TECH/DOCS/USB4-DMA ï¿½ KERNEL ARCHITECTURE</span>
         </div>
         <h1 class="font-display font-bold text-3xl sm:text-4xl text-ink">Zero-Copy USB4 / Thunderbolt PCIe P2P DMA Ringbuffer</h1>
         <p class="mt-3 text-sm sm:text-base text-slate leading-relaxed">
@@ -4231,11 +4269,11 @@ storybook = { port = 6006, color_profile = "DisplayP3_Uncompressed" }</pre>
         </p>
         <div class="mt-6 bg-ink text-paper p-5 border-2 border-ink font-mono text-xs overflow-x-auto">
           <pre class="text-emerald-300">+---------------------------+        USB4 / PCIe Tunnel (40 Gbps)        +---------------------------+
-¦  HOST NVMe / GPU BUFFER   ¦ -----------------------------------------? ¦  HANDHELD UFS 4.0 / METAL ¦
-¦  mmap() + io_uring ZC TX  ¦   64MB Lock-Free ChaCha20 DMA Ringbuffer   ¦  Zero-Copy MTLBuffer RX   ¦
+ï¿½  HOST NVMe / GPU BUFFER   ï¿½ -----------------------------------------? ï¿½  HANDHELD UFS 4.0 / METAL ï¿½
+ï¿½  mmap() + io_uring ZC TX  ï¿½   64MB Lock-Free ChaCha20 DMA Ringbuffer   ï¿½  Zero-Copy MTLBuffer RX   ï¿½
 +---------------------------+                                            +---------------------------+
-  • User-Space Copies : 0                                                  • Sustained Rate : 1.48 GB/s
-  • Kernel Syscalls   : 1 (io_uring_enter)                                 • P99 RTT Jitter : 0.42 ms</pre>
+  ï¿½ User-Space Copies : 0                                                  ï¿½ Sustained Rate : 1.48 GB/s
+  ï¿½ Kernel Syscalls   : 1 (io_uring_enter)                                 ï¿½ P99 RTT Jitter : 0.42 ms</pre>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6 font-mono text-xs">
           <div class="p-4 bg-surface border border-ink">
@@ -4253,7 +4291,7 @@ storybook = { port = 6006, color_profile = "DisplayP3_Uncompressed" }</pre>
         </div>`,
       wifi7_nan: `
         <div class="inline-flex items-center gap-2 px-2 py-0.5 bg-stone border border-hairline font-mono text-[10px] mb-3">
-          <span>SYNCDOCK.TECH/DOCS/WIFI7-NAN · WIRELESS PHY</span>
+          <span>SYNCDOCK.TECH/DOCS/WIFI7-NAN ï¿½ WIRELESS PHY</span>
         </div>
         <h1 class="font-display font-bold text-3xl sm:text-4xl text-ink">Wi-Fi 7 NAN &amp; Multi-Link Operation (MLO) Bonding</h1>
         <p class="mt-3 text-sm sm:text-base text-slate leading-relaxed">
@@ -4269,13 +4307,13 @@ storybook = { port = 6006, color_profile = "DisplayP3_Uncompressed" }</pre>
           <div class="p-5 bg-surface border-2 border-ink">
             <div class="text-cobalt font-bold mb-2">ZERO ROUTER / AP DEPENDENCY</div>
             <p class="text-slate font-sans leading-relaxed">
-              Even if your studio Wi-Fi router goes offline or blocks client-to-client isolation (common in hotel, café, or corporate networks), SyncDock peers directly radio-to-radio via 802.11az ranging and NAN service discovery.
+              Even if your studio Wi-Fi router goes offline or blocks client-to-client isolation (common in hotel, cafï¿½, or corporate networks), SyncDock peers directly radio-to-radio via 802.11az ranging and NAN service discovery.
             </p>
           </div>
         </div>`,
       security: `
         <div class="inline-flex items-center gap-2 px-2 py-0.5 bg-stone border border-hairline font-mono text-[10px] mb-3">
-          <span>SYNCDOCK.TECH/DOCS/SECURITY-ENCLAVE · ZERO-TRUST</span>
+          <span>SYNCDOCK.TECH/DOCS/SECURITY-ENCLAVE ï¿½ ZERO-TRUST</span>
         </div>
         <h1 class="font-display font-bold text-3xl sm:text-4xl text-ink">Zero-Cloud X25519 Hardware Enclave &amp; SEP SSH Signing</h1>
         <p class="mt-3 text-sm sm:text-base text-slate leading-relaxed">
@@ -4293,7 +4331,7 @@ storybook = { port = 6006, color_profile = "DisplayP3_Uncompressed" }</pre>
         </div>`,
       cli: `
         <div class="inline-flex items-center gap-2 px-2 py-0.5 bg-stone border border-hairline font-mono text-[10px] mb-3">
-          <span>SYNCDOCK.TECH/DOCS/CLI-REFERENCE · MANPAGE(1)</span>
+          <span>SYNCDOCK.TECH/DOCS/CLI-REFERENCE ï¿½ MANPAGE(1)</span>
         </div>
         <h1 class="font-display font-bold text-3xl sm:text-4xl text-ink">Daemon CLI, Local Root CA &amp; Air-Gapped Reference</h1>
         <p class="mt-3 text-sm sm:text-base text-slate leading-relaxed">
@@ -4483,7 +4521,7 @@ syncdock daemon --airgap          # Enforce strict USB4/Thunderbolt offline mode
 
       const logEl = document.getElementById('chirpStatusLog');
       if (logEl) {
-        logEl.innerHTML = `<span class="text-emerald-400 font-bold">[TX 18.4kHz GFSK CHIRP]</span> Broadcast 256-bit X25519 frame · Awaiting handheld ACK...`;
+        logEl.innerHTML = `<span class="text-emerald-400 font-bold">[TX 18.4kHz GFSK CHIRP]</span> Broadcast 256-bit X25519 frame ï¿½ Awaiting handheld ACK...`;
       }
 
       const stateEl = document.getElementById('qrHandshakeState');
@@ -4814,7 +4852,7 @@ haptic_detents  = true`
     const scopeProtocols = [
       {
         name: 'CH1: SYNCDOCK P2P CONDUIT',
-        jitter: '±0.09 ms',
+        jitter: 'ï¿½0.09 ms',
         throughput: '1.48 GB/s',
         verdict: '? IMPERCEPTIBLE LATENCY (120FPS LOCKED)',
         color: '#34D399',
@@ -4824,7 +4862,7 @@ haptic_detents  = true`
       },
       {
         name: 'CH2: AD-HOC WIRELESS DROP',
-        jitter: '±18.4 ms',
+        jitter: 'ï¿½18.4 ms',
         throughput: '42.0 MB/s',
         verdict: '? INTERMITTENT AWDL BUFFER STALLS',
         color: '#38BDF8',
@@ -4834,7 +4872,7 @@ haptic_detents  = true`
       },
       {
         name: 'CH3: PUBLIC REVERSE TUNNEL',
-        jitter: '±46.2 ms',
+        jitter: 'ï¿½46.2 ms',
         throughput: '8.4 MB/s',
         verdict: '? HIGH WAN ROUNDTRIP & TLS OVERHEAD',
         color: '#FBBF24',
@@ -4844,7 +4882,7 @@ haptic_detents  = true`
       },
       {
         name: 'CH4: CLOUD OBJECT SYNC',
-        jitter: '±920.0 ms',
+        jitter: 'ï¿½920.0 ms',
         throughput: '2.1 MB/s',
         verdict: '? UNUSABLE FOR REAL-TIME INTERACTION',
         color: '#F87171',
@@ -5180,17 +5218,17 @@ haptic_detents  = true`
       resRow.className = 'text-emerald-400 pl-2';
 
       if (cmd.includes('status')) {
-        resRow.innerHTML = `[DAEMON ONLINE] v0.9.4-RC3 · USB4 bridge100 (40Gbps) + Wi-Fi 7 NAN (Ch 149)<br/>Paired Nodes: iPhone 16 Pro (0.84ms RTT), iPad Pro M4 (0.92ms RTT)`;
+        resRow.innerHTML = `[DAEMON ONLINE] v0.9.4-RC3 ï¿½ USB4 bridge100 (40Gbps) + Wi-Fi 7 NAN (Ch 149)<br/>Paired Nodes: iPhone 16 Pro (0.84ms RTT), iPad Pro M4 (0.92ms RTT)`;
       } else if (cmd.includes('pair')) {
         emitUltrasonicHandshake();
-        resRow.innerHTML = `[18.4kHz GFSK CHIRP] Rotated X25519 key 0x${currentPairingHex.slice(0, 12)}… · Listening for handheld ACK`;
+        resRow.innerHTML = `[18.4kHz GFSK CHIRP] Rotated X25519 key 0x${currentPairingHex.slice(0, 12)}ï¿½ ï¿½ Listening for handheld ACK`;
       } else if (cmd.includes('beam')) {
         triggerLivePayload(0);
         resRow.innerHTML = `[PORT PROJECTED] https://m4.local.syncdock.tech:3000 mounted on paired iPhone 16 Pro`;
       } else if (cmd.includes('bench')) {
-        resRow.innerHTML = `[DMA BENCHMARK] 64MB lock-free ringbuffer: 1.48 GB/s sustained · 0 user-space copies · P99 jitter 0.09ms`;
+        resRow.innerHTML = `[DMA BENCHMARK] 64MB lock-free ringbuffer: 1.48 GB/s sustained ï¿½ 0 user-space copies ï¿½ P99 jitter 0.09ms`;
       } else if (cmd.includes('airgap')) {
-        resRow.innerHTML = `[AIR-GAP VERIFIED] WAN egress = 0 packets · Bound strictly to fe80::/10 link-local &amp; USB4 PCIe tunnel`;
+        resRow.innerHTML = `[AIR-GAP VERIFIED] WAN egress = 0 packets ï¿½ Bound strictly to fe80::/10 link-local &amp; USB4 PCIe tunnel`;
       } else {
         resRow.innerHTML = `Available commands: <span class="text-white">syncdock status</span>, <span class="text-white">syncdock pair --ultrasonic</span>, <span class="text-white">syncdock beam :3000</span>, <span class="text-white">syncdock bench --dma</span>, <span class="text-white">syncdock airgap --verify</span>, <span class="text-white">clear</span>`;
       }
@@ -5259,7 +5297,7 @@ haptic_detents  = true`
               <span>${n.name}</span>
               <span class="px-1.5 py-0.2 rounded bg-stone font-mono text-[10px] text-slate">${n.rtt}</span>
             </div>
-            <div class="font-mono text-[10px] text-muted mt-0.5">${n.os} · ${n.transport} · Key: ${n.pubkey}</div>
+            <div class="font-mono text-[10px] text-muted mt-0.5">${n.os} ï¿½ ${n.transport} ï¿½ Key: ${n.pubkey}</div>
           </div>
           <div class="flex items-center gap-1.5 font-mono text-[10px]">
             <button type="button" onclick="rotateNodeKey('${n.id}')" class="px-2 py-1 rounded bg-surface border border-hairline hover:border-ink text-ink">Rotate Key</button>
@@ -5315,7 +5353,7 @@ haptic_detents  = true`
       playTactileClick(780, 0.04);
       const banner = document.getElementById('authFeedbackBanner');
       if (banner) {
-        banner.innerHTML = `Requesting hardware biometric attestation from browser WebAuthn enclave…`;
+        banner.innerHTML = `Requesting hardware biometric attestation from browser WebAuthn enclaveï¿½`;
       }
 
       let passkeyId = 'webauthn_sep_' + Math.random().toString(16).slice(2, 10);
