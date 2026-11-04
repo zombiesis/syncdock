@@ -1,0 +1,14 @@
+{
+  "name": "syncdock-smtp-and-signaling-server",
+  "version": "0.9.4-rc3",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "nodemailer": "^6.9.14",
+    "ws": "^8.18.0"
+  }
+}

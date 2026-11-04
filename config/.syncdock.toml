@@ -1,0 +1,20 @@
+# SyncDock Workspace Cartridge Schema v0.9.4
+[cartridge]
+id = "acme-fintech-v4"
+domain = "pay.local.syncdock.tech"
+bezel_edge = "right"
+handheld_hud = "localhost_safari_inspector"
+
+[transport]
+usb4_dma = true
+wifi7_nan = true
+encryption = "chacha20-poly1305"
+key_exchange = "x25519-ephemeral"
+
+[security]
+faceid_ssh_enclave = true
+haptic_detents = true
+
+[ports]
+forwarded = [3000, 5432, 8080, 6006]
+auto_tls = true

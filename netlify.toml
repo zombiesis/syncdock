@@ -1,0 +1,102 @@
+# ─── Netlify Deployment Config ─────────────────────────────────────────────
+# Clean URLs: /workbench loads workbench.html, /pricing loads pricing.html, etc.
+# No .html in browser address bar.
+
+[build]
+  publish = "."      # root of the site (all .html files live here)
+
+# Strip .html from every page — Netlify serves page.html at /page automatically
+# with Pretty URLs enabled below.
+[build.environment]
+  NODE_VERSION = "20"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options          = "SAMEORIGIN"
+    X-Content-Type-Options   = "nosniff"
+    X-XSS-Protection         = "1; mode=block"
+    Referrer-Policy          = "strict-origin-when-cross-origin"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+    Permissions-Policy       = "camera=(), microphone=(), geolocation=()"
+
+# Redirect /page.html -> /page (301) so old bookmarks work
+[[redirects]]
+  from   = "/:page.html"
+  to     = "/:page"
+  status = 301
+  force  = true
+
+# Clean-URL SPA fallback: /workbench -> workbench.html  (Netlify handles this
+# automatically when Pretty URLs is enabled, but explicit rules are more reliable)
+[[redirects]]
+  from   = "/workbench"
+  to     = "/workbench.html"
+  status = 200
+
+[[redirects]]
+  from   = "/pricing"
+  to     = "/pricing.html"
+  status = 200
+
+[[redirects]]
+  from   = "/downloads"
+  to     = "/downloads.html"
+  status = 200
+
+[[redirects]]
+  from   = "/docs"
+  to     = "/docs.html"
+  status = 200
+
+[[redirects]]
+  from   = "/community"
+  to     = "/community.html"
+  status = 200
+
+[[redirects]]
+  from   = "/studio"
+  to     = "/studio.html"
+  status = 200
+
+[[redirects]]
+  from   = "/changelog"
+  to     = "/changelog.html"
+  status = 200
+
+[[redirects]]
+  from   = "/security"
+  to     = "/security.html"
+  status = 200
+
+[[redirects]]
+  from   = "/about"
+  to     = "/about.html"
+  status = 200
+
+[[redirects]]
+  from   = "/status"
+  to     = "/status.html"
+  status = 200
+
+[[redirects]]
+  from   = "/legal"
+  to     = "/legal.html"
+  status = 200
+
+[[redirects]]
+  from   = "/auth"
+  to     = "/auth.html"
+  status = 200
+
+[[redirects]]
+  from   = "/companion"
+  to     = "/companion.html"
+  status = 200
+
+# 404 fallback
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 404
+

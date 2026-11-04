@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SyncDock (v0.9.4 Beta) — Local-First Spatial Device Dock & Conduit</title>
+  <meta name="description" content="Anchor your desktop studio and handheld devices over a sub-millisecond USB4 DMA and Wi-Fi 7 NAN conduit. Zero cloud relays." />
+  <meta property="og:title" content="SyncDock — Tactile Cross-Device Workspace & Spatial Dock" />
+  <meta property="og:description" content="Bridge localhost ports, raw ProRes assets, clipboards, and Secure Enclave SSH keys in under 1 millisecond." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://syncdock.tech" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%23141413'/%3E%3Cpath d='M7 13L18 7L24 10.5V16.5L15 21.5V26.5L7 22V13Z' fill='%23F6F5F0'/%3E%3Cpath d='M33 27L22 33L16 29.5V23.5L25 18.5V13.5L33 18V27Z' fill='%23FF4F17'/%3E%3Crect x='18' y='18' width='4' height='4' fill='%2334D399' transform='rotate(45 20 20)'/%3E%3C/svg%3E" />
+
+  <!-- Google Fonts: Space Grotesk, Plus Jakarta Sans, Instrument Serif, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: 'var(--bg-paper)',
+            stone: 'var(--bg-stone)',
+            surface: 'var(--bg-surface)',
+            ink: 'var(--text-ink)',
+            slate: 'var(--text-slate)',
+            muted: 'var(--text-muted)',
+            signal: '#FF4F17',
+            cobalt: '#1B4DFF',
+            forest: '#156E46',
+            amber: '#D97706',
+            hairline: 'var(--border-hairline)',
+          },
+          fontFamily: {
+            display: ['"Space Grotesk"', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['"Instrument Serif"', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg-paper: #F6F5F0;
+      --bg-stone: #EAE8E0;
+      --bg-surface: #FFFFFF;
+      --text-ink: #141413;
+      --text-slate: #4F4D48;
+      --text-muted: #85827A;
+      --border-hairline: #D5D2C8;
+      --grid-dot: rgba(20, 20, 19, 0.08);
+    }
+
+    /* Engineering Blueprint Mode */
+    body.blueprint-mode {
+      --bg-paper: #0C2340;
+      --bg-stone: #08192E;
+      --bg-surface: #102C4E;
+      --text-ink: #F0F6FF;
+      --text-slate: #B5C9E2;
+      --text-muted: #6C8DB5;
+      --border-hairline: #234975;
+      --grid-dot: rgba(240, 246, 255, 0.12);
+    }
+
+    /* X-Ray CAD Wireframe Mode */
+    body.xray-mode * {
+      outline: 1px dashed rgba(255, 79, 23, 0.38) !important;
+    }
+
+    body {
+      background-color: var(--bg-paper);
+      color: var(--text-ink);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-image: radial-gradient(var(--grid-dot) 1px, transparent 1px);
+      background-size: 20px 20px;
+      overflow-x: hidden;
+      transition: background-color 0.35s ease, color 0.35s ease;
+    }
+
+    /* Tactile Mechanical Button */
+    .tactile-btn {
+      box-shadow: 3px 3px 0px var(--text-ink);
+      transition: transform 0.12s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.12s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .tactile-btn:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0px var(--text-ink);
+    }
+    .tactile-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px var(--text-ink);
+    }
+
+    /* 3D Spatial Stage CSS */
+    .stage-perspective {
+      perspective: 1400px;
+    }
+    .stage-assembly {
+      transform-style: preserve-3d;
+      transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .layer-3d-base {
+      transform: translateZ(0px);
+      transform-style: preserve-3d;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .layer-3d-mid {
+      transform: translateZ(26px);
+      transform-style: preserve-3d;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .layer-3d-high {
+      transform: translateZ(54px);
+      transform-style: preserve-3d;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .stage-assembly.exploded .layer-3d-base {
+      transform: translateZ(-35px);
+    }
+    .stage-assembly.exploded .layer-3d-mid {
+      transform: translateZ(45px);
+    }
+    .stage-assembly.exploded .layer-3d-high {
+      transform: translateZ(105px);
+    }
+
+    /* Hardware Controller Bar */
+    .dock-hardware-bar {
+      background: linear-gradient(180deg, #232321 0%, #141413 100%);
+      box-shadow: 0 20px 38px -12px rgba(20, 20, 19, 0.45), 4px 4px 0px #FF4F17;
+    }
+
+    /* SVG Conduit Flow Animation */
+    @keyframes dashFlow {
+      to {
+        stroke-dashoffset: -48;
+      }
+    }
+    .conduit-path-active {
+      stroke-dasharray: 8 6;
+      animation: dashFlow 0.9s linear infinite;
+    }
+
+    /* Kinetic Marquee */
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .kinetic-marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marqueeScroll 30s linear infinite;
+    }
+    .kinetic-marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    /* Custom Brand Mark Coupler Animation */
+    .logo-coupler-pin {
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .group:hover .logo-coupler-left {
+      transform: translateX(2px);
+    }
+    .group:hover .logo-coupler-right {
+      transform: translateX(-2px);
+    }
+
+    /* Optical Loupe Magnifier */
+    .loupe-lens {
+      pointer-events: none;
+      position: absolute;
+      width: 148px;
+      height: 148px;
+      border-radius: 9999px;
+      border: 2px solid #FF4F17;
+      box-shadow: 0 12px 30px rgba(20, 20, 19, 0.35), inset 0 0 0 2px rgba(255,255,255,0.4);
+      background-repeat: no-repeat;
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.85);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 30;
+    }
+    .loupe-container:hover .loupe-lens {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    /* Founder Pass Card */
+    .founder-pass-card {
+      background:
+        radial-gradient(circle at var(--pass-x, 50%) var(--pass-y, 50%), rgba(255, 79, 23, 0.16), transparent 55%),
+        linear-gradient(135deg, #1B1B1A 0%, #10100F 100%);
+      box-shadow: 0 22px 44px -12px rgba(20, 20, 19, 0.45), 6px 6px 0px #FF4F17;
+      transition: transform 0.2s ease;
+    }
+
+    /* Ruler ticks */
+    .swiss-ruler-ticks {
+      background-image: repeating-linear-gradient(
+        to right,
+        var(--border-hairline) 0px,
+        var(--border-hairline) 1px,
+        transparent 1px,
+        transparent 8px
+      );
+    }
+
+    /* Multi-Page View Transitions */
+    .app-page-view {
+      display: none;
+      animation: pageSlideIn 0.26s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .app-page-view.active-page {
+      display: block;
+    }
+    @keyframes pageSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+
+  <!-- Early Global Router & Event Safeguards (Works on file:// and static servers) -->
+  <script>
+    window.switchPage = function(pageId, skipScroll, subTopic) {
+      if (window.__syncdockSwitchPage) {
+        return window.__syncdockSwitchPage(pageId, skipScroll, subTopic);
+      }
+      window.location.hash = '#' + pageId;
+      return false;
+    };
+    window.jumpToSection = function(pageId, sectionId) {
+      if (window.__syncdockJumpToSection) {
+        return window.__syncdockJumpToSection(pageId, sectionId);
+      }
+      window.location.hash = '#' + pageId;
+      return false;
+    };
+    window.moveOpticalLoupe = window.moveOpticalLoupe || function() {};
+    window.tiltFounderPass = window.tiltFounderPass || function() {};
+    window.resetFounderPass = window.resetFounderPass || function() {};
+    window.emitUltrasonicHandshake = window.emitUltrasonicHandshake || function() {};
+    window.renderDynamicPairingQr = window.renderDynamicPairingQr || function() {};
+    window.buildCustomToml = window.buildCustomToml || function() {};
+    window.downloadCustomTomlFile = window.downloadCustomTomlFile || function() {};
+    window.copyCustomToml = window.copyCustomToml || function() {};
+    window.submitBetaBugReport = window.submitBetaBugReport || function() { return false; };
+  </script>
+</head>
+<body class="antialiased selection:bg-signal selection:text-white pb-24">
+  <!-- =====================================================================
+       TOP RELEASE & SOCIAL ECOSYSTEM BAR
+       ===================================================================== -->
+  <div class="bg-ink text-paper border-b border-hairline px-4 lg:px-8 py-2 text-xs relative z-50">
+    <div class="max-w-[1440px] mx-auto flex flex-wrap items-center justify-between gap-3">
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="px-2 py-0.5 rounded bg-signal text-white font-mono text-[10px] font-semibold uppercase tracking-wider flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+          Public Beta v0.9.4-RC3
+        </span>
+        <span class="text-stone/85 text-xs">
+          Zero-copy USB4 DMA &amp; local TLS certificates are now live.
+        </span>
+        <span class="hidden md:inline text-white/20">·</span>
+        <span class="hidden md:inline font-mono text-[11px] text-stone/80">
+          Founder Cohort: <strong id="betaSeatCounterTop" class="text-emerald-400">384 / 500 claimed</strong>
+        </span>
+      </div>
+
+      <div class="flex items-center gap-4 text-[11px] font-mono">
+        <a href="#community" onclick="return switchPage('community', false)" class="hidden sm:inline-flex items-center gap-1.5 text-stone/80 hover:text-white transition-colors">
+          <i class="ph-fill ph-github-logo text-sm"></i>
+          <span>14.8k ★</span>
+        </a>
+        <a href="#community" onclick="return switchPage('community', false)" class="hidden sm:inline-flex items-center gap-1.5 text-stone/80 hover:text-white transition-colors">
+          <i class="ph-fill ph-discord-logo text-sm text-indigo-400"></i>
+          <span>Discord</span>
+        </a>
+        <a href="#status" onclick="return switchPage('status', false)" class="hidden lg:inline-flex items-center gap-1.5 text-emerald-400 hover:text-white transition-colors">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+          <span>Mirrors Operational</span>
+        </a>
+        <button type="button" onclick="openCompanionWindow()" class="text-amber hover:text-white font-semibold flex items-center gap-1 transition-colors cursor-pointer">
+          <i class="ph-bold ph-devices"></i>
+          <span>Cross-Tab Sync</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       CLEAN DESKTOP HEADER & MEGA-MENU NAVIGATION
+       ===================================================================== -->
+  
+  <!-- HEADER NAVIGATION -->
+  
+  
+  <!-- HEADER NAVIGATION -->
+  <header class="sticky top-0 z-40 bg-paper/95 backdrop-blur-md border-b border-hairline">
+    <div class="h-0.5 w-full bg-stone/60 relative overflow-hidden">
+      <div id="scrollProgressBar" class="h-full bg-signal transition-all duration-75" style="width: 0%;"></div>
+    </div>
+
+    <div class="max-w-[1440px] mx-auto px-4 lg:px-8 h-16 flex items-center justify-between gap-4">
+      <!-- Brand Identity -->
+      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="flex items-center gap-3 group text-left cursor-pointer shrink-0">
+        <div class="w-10 h-10 rounded-lg bg-ink text-paper flex items-center justify-center border border-ink relative overflow-hidden group-hover:border-signal transition-colors shadow-sm">
+          <svg class="w-7 h-7" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g class="logo-coupler-pin logo-coupler-left">
+              <path d="M7 13L18 7L24 10.5V16.5L15 21.5V26.5L7 22V13Z" fill="currentColor"/>
+              <circle cx="13" cy="15" r="1.5" fill="#141413"/>
+            </g>
+            <g class="logo-coupler-pin logo-coupler-right">
+              <path d="M33 27L22 33L16 29.5V23.5L25 18.5V13.5L33 18V27Z" fill="#FF4F17"/>
+              <circle cx="27" cy="25" r="1.5" fill="#FFFFFF"/>
+            </g>
+            <rect x="18" y="18" width="4" height="4" fill="#34D399" transform="rotate(45 20 20)"/>
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-display font-bold text-lg tracking-tight leading-none">SyncDock</span>
+            <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-stone border border-hairline text-ink font-medium">v0.9.4</span>
+          </div>
+          <p class="text-[11px] text-muted mt-0.5">Spatial Device Conduit</p>
+        </div>
+      </a>
+
+      <!-- Primary Navigation Links -->
+      <nav class="hidden lg:flex items-center gap-1 text-sm font-medium">
+        <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-overview" class="px-3.5 py-1.5 rounded-md text-slate hover:text-ink hover:bg-stone/60 transition-all flex items-center gap-1.5 cursor-pointer"><span>Product</span></a>
+        <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-workbench" class="px-3.5 py-1.5 rounded-md text-slate hover:text-ink hover:bg-stone/60 transition-all flex items-center gap-1.5 cursor-pointer"><span>Live Workbench</span><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span></a>
+        <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-pricing" class="px-3.5 py-1.5 rounded-md text-slate hover:text-ink hover:bg-stone/60 transition-all flex items-center gap-1.5 cursor-pointer"><span>Pricing</span></a>
+        <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-downloads" class="px-3.5 py-1.5 rounded-md text-slate hover:text-ink hover:bg-stone/60 transition-all flex items-center gap-1.5 cursor-pointer"><span>Downloads</span></a>
+        <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-docs" class="px-3.5 py-1.5 rounded-md text-slate hover:text-ink hover:bg-stone/60 transition-all flex items-center gap-1.5 cursor-pointer"><span>Documentation</span></a>
+        <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-community" class="px-3.5 py-1.5 rounded-md text-slate hover:text-ink hover:bg-stone/60 transition-all flex items-center gap-1.5 cursor-pointer"><span>Community</span></a>
+
+        <!-- Explore Mega-Menu Dropdown -->
+        <div class="relative group">
+          <button type="button" class="px-3.5 py-1.5 rounded-md text-slate hover:text-ink hover:bg-stone/60 transition-all flex items-center gap-1">
+            <span>Explore</span>
+            <i class="ph-bold ph-caret-down text-xs"></i>
+          </button>
+          <div class="absolute left-0 top-full pt-2 w-72 hidden group-hover:block z-50">
+            <div class="bg-surface border border-ink rounded-lg shadow-xl p-2 space-y-1 text-xs">
+              
+              <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-studio" class="flex items-start gap-2.5 p-2 rounded hover:bg-stone/60 transition-colors">
+                <i class="ph-bold ph-sliders-horizontal text-cobalt text-base mt-0.5"></i>
+                <div>
+                  <div class="font-semibold text-ink">Visual .TOML Studio</div>
+                  <div class="text-[11px] text-muted">Build &amp; export workspace cartridges</div>
+                </div>
+              </a>
+              
+              <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-changelog" class="flex items-start gap-2.5 p-2 rounded hover:bg-stone/60 transition-colors">
+                <i class="ph-bold ph-git-commit text-signal text-base mt-0.5"></i>
+                <div>
+                  <div class="font-semibold text-ink">Changelog &amp; Bug Bounty</div>
+                  <div class="text-[11px] text-muted">Release notes &amp; kernel issue tracker</div>
+                </div>
+              </a>
+              
+              <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-security" class="flex items-start gap-2.5 p-2 rounded hover:bg-stone/60 transition-colors">
+                <i class="ph-bold ph-shield-check text-forest text-base mt-0.5"></i>
+                <div>
+                  <div class="font-semibold text-ink">WAF &amp; Edge Security</div>
+                  <div class="text-[11px] text-muted">Rate-limiting &amp; payload sanitization</div>
+                </div>
+              </a>
+              
+              <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-about" class="flex items-start gap-2.5 p-2 rounded hover:bg-stone/60 transition-colors">
+                <i class="ph-bold ph-buildings text-amber text-base mt-0.5"></i>
+                <div>
+                  <div class="font-semibold text-ink">About &amp; Hardware Labs</div>
+                  <div class="text-[11px] text-muted">Zürich &amp; SF benches, manifesto &amp; careers</div>
+                </div>
+              </a>
+              
+              <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-status" class="flex items-start gap-2.5 p-2 rounded hover:bg-stone/60 transition-colors">
+                <i class="ph-bold ph-heartbeat text-emerald-600 text-base mt-0.5"></i>
+                <div>
+                  <div class="font-semibold text-ink">System Status &amp; Mirrors</div>
+                  <div class="text-[11px] text-muted">Live uptime for APT, Homebrew &amp; GPG</div>
+                </div>
+              </a>
+              
+              <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="nav-tab-legal" class="flex items-start gap-2.5 p-2 rounded hover:bg-stone/60 transition-colors">
+                <i class="ph-bold ph-scales text-slate text-base mt-0.5"></i>
+                <div>
+                  <div class="font-semibold text-ink">Trust Center &amp; Legal</div>
+                  <div class="text-[11px] text-muted">Privacy policy, Terms &amp; SOC2 Type II</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Right Action Controls -->
+      <div class="flex items-center gap-2 shrink-0">
+        <button id="audioToggleBtn" onclick="toggleAudioEngine()" title="Toggle Tactile Sound" class="hidden sm:flex items-center gap-1 px-2.5 py-2 rounded-md text-xs font-mono bg-stone/60 border border-hairline hover:border-ink transition-colors">
+          <i id="audioIcon" class="ph-bold ph-speaker-high text-signal"></i>
+          <span id="audioStatusText" class="hidden xl:inline">ON</span>
+        </button>
+
+        <button type="button" onclick="openCommandModal()" class="hidden sm:flex items-center gap-2 px-3 py-2 rounded-md text-xs font-mono bg-stone/60 border border-hairline hover:border-ink transition-colors">
+          <i class="ph ph-terminal-window"></i>
+          <span>CLI</span>
+          <kbd class="px-1.5 py-0.5 text-[10px] rounded bg-surface border border-hairline">⌘K</kbd>
+        </button>
+
+        <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  id="headerAuthStatusBtn" class="flex items-center gap-2 px-3.5 py-2 rounded-md text-xs font-medium bg-surface border border-hairline hover:border-ink transition-colors ring-2 ring-signal">
+          <span id="headerAuthDot" class="w-2 h-2 rounded-full bg-amber"></span>
+          <span id="headerAuthLabel">Log in</span>
+        </a>
+
+        <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="tactile-btn rounded-md bg-ink text-paper text-xs font-semibold px-4 py-2 border border-ink flex items-center gap-1.5 cursor-pointer">
+          <span>Download</span>
+          <i class="ph-bold ph-download-simple text-signal"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Bar -->
+    <div class="lg:hidden border-t border-hairline bg-stone/70 px-4 py-2 flex items-center gap-1.5 overflow-x-auto text-xs font-medium">
+      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Product</a>
+      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Workbench</a>
+      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Pricing</a>
+      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Downloads</a>
+      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Docs</a>
+      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Community</a>
+      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">TOML Studio</a>
+      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">About</a>
+      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Status</a>
+      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="px-3 py-1 rounded bg-surface text-ink border border-hairline shrink-0">Legal</a>
+      <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="px-3 py-1 rounded bg-signal text-white font-semibold shrink-0">Log in</a>
+    </div>
+  </header>
+  
+  <main class="max-w-[1440px] mx-auto border-x border-hairline">
+    <div id="page-auth" class="app-page-view active-page" style="display:block;">
+      <div class="border-b border-hairline px-4 lg:px-8 py-3 flex flex-wrap items-center justify-between bg-stone/40 text-xs">
+        <div class="flex items-center gap-2">
+          <span class="px-2 py-0.5 rounded bg-surface border border-hairline font-mono text-[11px] font-semibold text-ink">Account &amp; Hardware Enclave</span>
+          <span class="text-slate hidden sm:inline">Sign in with WebAuthn Passkey, SSO, or configure your SMTP relay</span>
+        </div>
+        <span id="smtpStatusHeaderBadge" class="font-mono text-[11px] text-forest font-semibold">● WebAuthn &amp; SMTP Relay Ready</span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 border-b border-hairline">
+        <!-- LEFT COLUMN: SIGN UP / SIGN IN / WEBAUTHN PASSKEY / DEVICE DASHBOARD -->
+        <div class="lg:col-span-6 p-6 sm:p-10 lg:p-12 border-b lg:border-b-0 lg:border-r border-hairline bg-paper flex flex-col justify-between">
+          <div>
+            <!-- Mode Switcher (Sign In / Sign Up / Console) -->
+            <div class="flex items-center justify-between pb-4 mb-6 border-b border-hairline">
+              <div class="inline-flex rounded-lg bg-stone p-1 border border-hairline text-xs font-medium">
+                <button type="button" onclick="setAuthTabMode('login')" id="auth-mode-login" class="px-3.5 py-1.5 rounded-md bg-ink text-paper font-semibold">
+                  Log in
+                </button>
+                <button type="button" onclick="setAuthTabMode('signup')" id="auth-mode-signup" class="px-3.5 py-1.5 rounded-md text-ink hover:bg-surface">
+                  Create account
+                </button>
+                <button type="button" onclick="setAuthTabMode('console')" id="auth-mode-console" class="px-3.5 py-1.5 rounded-md text-ink hover:bg-surface">
+                  Device Console
+                </button>
+              </div>
+              <span id="authSessionStateBadge" class="font-mono text-[11px] px-2.5 py-0.5 rounded bg-stone border border-hairline text-muted">
+                Guest Session
+              </span>
+            </div>
+
+            <!-- QUICK SSO & REAL WEBAUTHN HARDWARE PASSKEY BAR -->
+            <div id="ssoPasskeyQuickBar" class="mb-6 space-y-2.5">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <button type="button" onclick="triggerSsoAuth('GitHub')" class="w-full py-2.5 px-3 rounded-md bg-surface border border-ink/80 hover:border-signal text-xs font-semibold flex items-center justify-center gap-2 transition-colors shadow-sm">
+                  <i class="ph-fill ph-github-logo text-base"></i>
+                  <span>Continue with GitHub</span>
+                </button>
+                <button type="button" onclick="triggerSsoAuth('Google')" class="w-full py-2.5 px-3 rounded-md bg-surface border border-ink/80 hover:border-signal text-xs font-semibold flex items-center justify-center gap-2 transition-colors shadow-sm">
+                  <i class="ph-bold ph-google-logo text-base text-signal"></i>
+                  <span>Continue with Google</span>
+                </button>
+              </div>
+              <button type="button" onclick="triggerRealWebAuthnPasskey()" class="w-full py-2.5 px-4 rounded-md bg-ink text-paper hover:bg-ink/90 text-xs font-mono font-semibold flex items-center justify-center gap-2 border border-ink transition-all shadow-sm">
+                <i class="ph-bold ph-fingerprint text-signal text-base"></i>
+                <span>Sign in with Hardware Passkey (TouchID / FaceID WebAuthn)</span>
+              </button>
+              <div class="relative flex py-1 items-center">
+                <div class="flex-grow border-t border-hairline"></div>
+                <span class="flex-shrink mx-3 text-[11px] font-mono text-muted uppercase">Or continue with email</span>
+                <div class="flex-grow border-t border-hairline"></div>
+              </div>
+            </div>
+
+            <!-- VIEW A: SIGN UP FORM -->
+            <form id="authSignupForm" onsubmit="return handleAuthSignup(event)" class="space-y-4 font-mono text-xs hidden">
+              <div>
+                <h2 class="font-display font-bold text-2xl text-ink font-sans">
+                  Create your SyncDock account
+                </h2>
+                <p class="text-xs text-slate font-sans mt-1 leading-relaxed">
+                  Generates a 6-digit verification code and X25519 CLI pairing token, persisted locally and dispatched via your SMTP relay.
+                </p>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                <div>
+                  <label class="block text-[10px] uppercase text-muted mb-1">FULL NAME / CALLSIGN *</label>
+                  <input id="signupNameInput" type="text" required placeholder="Alex von Berg" class="w-full px-3 py-2.5 bg-surface border border-ink text-ink focus:outline-none focus:ring-2 focus:ring-signal" />
+                </div>
+                <div>
+                  <label class="block text-[10px] uppercase text-muted mb-1">WORK / STUDIO EMAIL *</label>
+                  <input id="signupEmailInput" type="email" required placeholder="alex@syncdock.tech" class="w-full px-3 py-2.5 bg-surface border border-ink text-ink focus:outline-none focus:ring-2 focus:ring-signal" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-[10px] uppercase text-muted mb-1">PASSWORD (MIN 6 CHARS) *</label>
+                  <input id="signupPasswordInput" type="password" required minlength="6" placeholder="••••••••••••" class="w-full px-3 py-2.5 bg-surface border border-ink text-ink focus:outline-none focus:ring-2 focus:ring-signal" />
+                </div>
+                <div>
+                  <label class="block text-[10px] uppercase text-muted mb-1">PRIMARY OS STACK</label>
+                  <select id="signupStackSelect" class="w-full px-3 py-2.5 bg-surface border border-ink text-ink">
+                    <option value="macOS M4 + iPhone 16 Pro">macOS M4 + iPhone 16 Pro</option>
+                    <option value="Linux Wayland + Android 15">Linux Wayland + Android 15</option>
+                    <option value="Windows 11 WSL2 + iOS/Android">Windows 11 WSL2 + iOS/Android</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="pt-2 flex flex-wrap items-center gap-3">
+                <button type="submit" id="signupSubmitBtn" class="tactile-btn bg-signal text-white font-mono text-xs font-bold uppercase px-5 py-3 border border-ink flex items-center gap-2">
+                  <i class="ph-bold ph-paper-plane-tilt"></i>
+                  <span>Create Account &amp; Send SMTP Email</span>
+                </button>
+                <button type="button" onclick="setAuthTabMode('login')" class="px-3 py-2.5 bg-stone border border-hairline hover:border-ink text-ink">
+                  Already have an account? Sign In →
+                </button>
+              </div>
+            </form>
+
+            <!-- VIEW B: LOGIN FORM -->
+            <form id="authLoginForm" onsubmit="return handleAuthLogin(event)" class="space-y-4 font-mono text-xs hidden">
+              <div>
+                <span class="text-cobalt font-bold uppercase text-[11px]">RETURNING ENGINEER SIGN IN</span>
+                <h2 class="font-display font-bold text-3xl text-ink mt-1 font-sans">
+                  Sign in to your SyncDock workbench.
+                </h2>
+                <p class="text-xs text-slate font-sans mt-1">
+                  Enter your registered email and password (demo: <code class="bg-stone px-1">alex@syncdock.tech</code> / <code class="bg-stone px-1">demo123</code>), or request a 1-time SMTP Magic Login Code.
+                </p>
+              </div>
+
+              <div>
+                <label class="block text-[10px] uppercase text-muted mb-1">REGISTERED EMAIL ADDRESS *</label>
+                <input id="loginEmailInput" type="email" required value="alex@syncdock.tech" placeholder="alex@syncdock.tech" class="w-full px-3 py-2.5 bg-surface border border-ink text-ink focus:outline-none focus:ring-2 focus:ring-signal" />
+              </div>
+
+              <div>
+                <label class="block text-[10px] uppercase text-muted mb-1">PASSWORD *</label>
+                <input id="loginPasswordInput" type="password" required value="demo123" placeholder="••••••••••••" class="w-full px-3 py-2.5 bg-surface border border-ink text-ink focus:outline-none focus:ring-2 focus:ring-signal" />
+              </div>
+
+              <div class="pt-2 flex flex-wrap items-center gap-3">
+                <button type="submit" class="tactile-btn bg-ink text-paper font-mono text-xs font-bold uppercase px-5 py-3 border border-ink flex items-center gap-2">
+                  <i class="ph-bold ph-sign-in text-signal"></i>
+                  <span>Sign In to Console</span>
+                </button>
+                <button type="button" onclick="sendMagicLinkOtp()" class="tactile-btn bg-surface text-ink font-mono text-xs font-bold uppercase px-4 py-3 border border-ink flex items-center gap-2">
+                  <i class="ph-bold ph-envelope-simple-open text-cobalt"></i>
+                  <span>Send OTP Code via SMTP</span>
+                </button>
+              </div>
+            </form>
+
+            <!-- VIEW C: 6-DIGIT EMAIL OTP VERIFICATION & LOGGED-IN CONSOLE -->
+            <div id="authConsolePanel" class="space-y-5 font-mono text-xs hidden">
+              <div class="p-4 bg-ink text-paper border-2 border-signal">
+                <div class="flex items-center justify-between border-b border-white/15 pb-2.5 mb-3">
+                  <span class="text-signal font-bold uppercase">AUTHENTICATED WORKBENCH SESSION</span>
+                  <span id="consoleVerifiedBadge" class="px-2 py-0.5 bg-amber text-white text-[10px] font-bold">OTP PENDING</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <div class="text-[10px] text-stone/60">ENGINEER</div>
+                    <div id="consoleUserName" class="font-display font-bold text-base text-white">Alex von Berg</div>
+                  </div>
+                  <div>
+                    <div class="text-[10px] text-stone/60">EMAIL</div>
+                    <div id="consoleUserEmail" class="text-emerald-400 font-bold truncate">alex@syncdock.tech</div>
+                  </div>
+                </div>
+                <div class="mt-3 pt-3 border-t border-white/10 flex items-center justify-between">
+                  <div>
+                    <span class="text-[10px] text-stone/60 block">PERSONAL CLI TOKEN:</span>
+                    <code id="consoleUserToken" class="text-signal font-bold">SD-BETA-9042-AUTH</code>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <button type="button" onclick="switchPage('workbench', false)" class="px-2.5 py-1 bg-signal text-white text-[10px] font-bold uppercase">
+                      Open Live Dock →
+                    </button>
+                    <button type="button" onclick="handleAuthLogout()" class="px-2.5 py-1 bg-white/10 hover:bg-red-600 text-white text-[10px] font-bold uppercase">
+                      Sign Out
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 6-Digit OTP Verification Box -->
+              <div id="otpVerifyBox" class="p-4 bg-surface border-2 border-ink">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="font-bold text-ink">VERIFY 6-DIGIT SMTP EMAIL CODE</span>
+                  <button type="button" onclick="resendVerificationEmail()" class="text-signal underline text-[11px]">Resend SMTP Email</button>
+                </div>
+                <p class="text-[11px] text-slate font-sans mb-3">
+                  Enter the 6-digit verification code sent via your SMTP server (also visible in the live SMTP Outbox Inspector on the right for instant testing).
+                </p>
+                <div class="flex items-center gap-2">
+                  <input id="otpCodeInput" type="text" maxlength="6" placeholder="849201" class="w-40 px-3 py-2 bg-paper border border-ink font-mono text-sm font-bold tracking-widest text-center" />
+                  <button type="button" onclick="verifyOtpCode()" class="tactile-btn bg-forest text-white px-4 py-2 font-bold uppercase border border-ink">
+                    Verify Code ✓
+                  </button>
+                </div>
+              </div>
+
+              <!-- PAIRED HARDWARE NODES MANAGER -->
+              <div class="p-4 bg-surface rounded-lg border border-ink">
+                <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b border-hairline">
+                  <div>
+                    <span class="font-bold text-ink block">Paired Hardware Nodes (<span id="pairedNodeCount">3</span>)</span>
+                    <span class="text-[11px] text-slate font-sans">Manage X25519 enclave keys, inspect link latency, or revoke access.</span>
+                  </div>
+                  <button type="button" onclick="addSimulatedHardwareNode()" class="px-2.5 py-1.5 rounded bg-ink text-paper text-[11px] font-semibold hover:bg-signal transition-colors">
+                    + Pair New Node
+                  </button>
+                </div>
+                <div id="pairedNodesListContainer" class="space-y-2"></div>
+              </div>
+            </div>
+
+            <!-- Live Auth Status Banner -->
+            <div id="authFeedbackBanner" class="mt-5 p-3 rounded bg-stone border border-hairline font-mono text-xs text-ink">
+              Ready. Sign in with Passkey, GitHub/Google, or email credentials.
+            </div>
+          </div>
+
+          <!-- Registered Beta Users Table -->
+          <div class="mt-8 pt-4 border-t border-hairline font-mono text-xs">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-muted uppercase text-[10px]">REGISTERED ACCOUNTS IN SESSION (<span id="userCountBadge">1</span>)</span>
+              <span class="text-forest text-[10px]">● SHA-256 CREDENTIAL HASH</span>
+            </div>
+            <div id="registeredUsersList" class="space-y-1.5 text-[11px] max-h-28 overflow-y-auto"></div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: SMTP SERVER CONFIGURATION, WEBHOOK BRIDGE & LIVE EMAIL OUTBOX -->
+        <div class="lg:col-span-6 p-6 sm:p-10 lg:p-12 bg-stone/35 flex flex-col justify-between font-mono text-xs">
+          <div>
+            <div class="flex items-center justify-between pb-3 mb-4 border-b border-hairline">
+              <div>
+                <span class="text-signal font-bold uppercase text-[11px]">YOUR SMTP SERVER CONFIGURATION</span>
+                <h3 class="font-display font-bold text-2xl text-ink font-sans">Connect your SMTP Server &amp; Relay</h3>
+              </div>
+              <span class="px-2 py-0.5 bg-ink text-paper text-[10px] font-bold">PORT 587 / 465</span>
+            </div>
+
+            <p class="text-xs text-slate font-sans mb-4 leading-relaxed">
+              Because web browsers block raw TCP port 587/465 sockets directly from client HTML for security, you can point this page at a tiny 20-line SMTP relay endpoint on your server (`POST /api/smtp-send`). Enter your SMTP details below to test live webhook dispatch and auto-generate your ready-to-run Node.js / Python / PHP relay script.
+            </p>
+
+            <!-- SMTP Server Credentials Form -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mb-2.5">
+              <div class="sm:col-span-2">
+                <label class="block text-[10px] text-muted uppercase mb-1">SMTP HOST</label>
+                <input id="smtpHostInput" type="text" value="smtp.syncdock.tech" oninput="updateSmtpBackendCode()" class="w-full px-2.5 py-2 bg-surface border border-ink text-ink text-xs" />
+              </div>
+              <div>
+                <label class="block text-[10px] text-muted uppercase mb-1">PORT &amp; TLS</label>
+                <select id="smtpPortInput" onchange="updateSmtpBackendCode()" class="w-full px-2.5 py-2 bg-surface border border-ink text-ink text-xs">
+                  <option value="587">587 (STARTTLS)</option>
+                  <option value="465">465 (SSL/TLS)</option>
+                  <option value="2525">2525 (Relay)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-2.5">
+              <div>
+                <label class="block text-[10px] text-muted uppercase mb-1">SMTP USERNAME</label>
+                <input id="smtpUserInput" type="text" value="no-reply@syncdock.tech" oninput="updateSmtpBackendCode()" class="w-full px-2.5 py-2 bg-surface border border-ink text-ink text-xs" />
+              </div>
+              <div>
+                <label class="block text-[10px] text-muted uppercase mb-1">SMTP PASSWORD / KEY</label>
+                <input id="smtpPassInput" type="password" value="smtp_live_984a7bc21" oninput="updateSmtpBackendCode()" class="w-full px-2.5 py-2 bg-surface border border-ink text-ink text-xs" />
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label class="block text-[10px] text-muted uppercase mb-1">YOUR SERVER HTTP RELAY ENDPOINT (POST JSON TO YOUR SMTP SERVER)</label>
+              <div class="flex gap-2">
+                <input id="smtpEndpointInput" type="text" value="https://syncdock.tech/api/smtp-send" class="flex-1 px-2.5 py-2 bg-surface border border-ink text-ink text-xs" />
+                <button type="button" onclick="sendTestSmtpEmail()" class="px-3 py-2 bg-ink text-paper font-bold uppercase hover:bg-signal transition-colors shrink-0">
+                  Test SMTP Dispatch
+                </button>
+              </div>
+            </div>
+
+            <!-- Ready-to-Deploy Backend Relay Code Generator (Node.js / Python / PHP) -->
+            <div class="bg-ink text-paper border-2 border-ink p-4 mb-5">
+              <div class="flex flex-wrap items-center justify-between gap-2 pb-2.5 mb-2.5 border-b border-white/15">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-[10px] text-stone/60 uppercase mr-1">SERVER SCRIPT:</span>
+                  <button type="button" onclick="switchSmtpLang('node')" id="smtp-lang-node" class="px-2 py-0.5 bg-signal text-white text-[10px] font-bold">Node.js (Nodemailer)</button>
+                  <button type="button" onclick="switchSmtpLang('python')" id="smtp-lang-python" class="px-2 py-0.5 bg-white/10 text-white text-[10px]">Python (smtplib)</button>
+                  <button type="button" onclick="switchSmtpLang('php')" id="smtp-lang-php" class="px-2 py-0.5 bg-white/10 text-white text-[10px]">PHP (mail/SMTP)</button>
+                </div>
+                <button type="button" onclick="copySmtpServerScript()" id="copySmtpScriptBtn" class="px-2 py-0.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[10px] font-bold">
+                  COPY SERVER CODE
+                </button>
+              </div>
+              <pre id="smtpServerCodePre" class="text-[10px] text-emerald-300 overflow-x-auto max-h-40 leading-relaxed"></pre>
+            </div>
+          </div>
+
+          <!-- LIVE SMTP OUTBOX & RENDERED EMAIL INSPECTOR -->
+          <div class="bg-surface border-2 border-ink p-4">
+            <div class="flex items-center justify-between border-b border-hairline pb-2 mb-3">
+              <span class="font-bold text-ink flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                LIVE SMTP DISPATCH LOG &amp; EMAIL PREVIEW
+              </span>
+              <span id="smtpQueueCounter" class="text-[10px] px-1.5 py-0.5 bg-stone text-ink font-bold">1 SENT</span>
+            </div>
+
+            <div id="smtpRenderedEmailPreview" class="p-3 bg-paper border border-hairline text-xs font-sans space-y-1.5">
+              <div class="flex justify-between font-mono text-[10px] text-muted border-b border-hairline pb-1">
+                <span>TO: <strong id="emailPreviewTo" class="text-ink">alex@syncdock.tech</strong></span>
+                <span id="emailPreviewTransport" class="text-forest font-bold">250 2.0.0 OK (SMTP)</span>
+              </div>
+              <div id="emailPreviewSubject" class="font-display font-bold text-sm text-ink pt-1">
+                [SyncDock Beta] Your 6-Digit Verification Code: 849201
+              </div>
+              <p id="emailPreviewBody" class="text-xs text-slate leading-relaxed">
+                Welcome to SyncDock Public Beta v0.9.4! Your verification code is <strong>849201</strong> and your CLI token is <code>SD-BETA-9042-AUTH</code>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  <!-- FOOTER -->
+  <footer class="bg-stone/60 px-6 sm:px-10 lg:px-12 py-12 border-t border-hairline">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-10 border-b border-hairline">
+      <div class="md:col-span-5">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-lg bg-ink text-paper flex items-center justify-center border border-ink">
+            <svg class="w-6 h-6" viewBox="0 0 40 40" fill="none">
+              <path d="M7 13L18 7L24 10.5V16.5L15 21.5V26.5L7 22V13Z" fill="#F6F5F0"/>
+              <path d="M33 27L22 33L16 29.5V23.5L25 18.5V13.5L33 18V27Z" fill="#FF4F17"/>
+            </svg>
+          </div>
+          <div>
+            <span class="font-display font-bold text-lg tracking-tight block leading-none">SyncDock</span>
+            <span class="font-mono text-[10px] text-signal font-bold">Public Beta v0.9.4-RC3</span>
+          </div>
+        </div>
+        <p class="mt-3 text-xs text-slate max-w-sm leading-relaxed">
+          Engineered with tactile precision for software craftspeople, industrial designers, and multi-device builders. Zero cloud lock-in.
+        </p>
+        <div class="mt-4 flex items-center gap-3 text-slate">
+          <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  title="GitHub" class="hover:text-ink"><i class="ph-fill ph-github-logo text-lg"></i></a>
+          <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  title="X / Twitter" class="hover:text-ink"><i class="ph-bold ph-x-logo text-lg"></i></a>
+          <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  title="Discord" class="hover:text-ink"><i class="ph-fill ph-discord-logo text-lg"></i></a>
+          <a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  title="Mastodon" class="hover:text-ink"><i class="ph-fill ph-mastodon-logo text-lg"></i></a>
+        </div>
+      </div>
+
+      <div class="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-6 text-xs">
+        <div>
+          <div class="text-ink font-semibold mb-2.5">Product &amp; Tools</div>
+          <ul class="space-y-2 text-slate">
+            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">Product Overview</a></li>
+            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer font-semibold text-ink">Live Conduit Workbench</a></li>
+            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">Visual .TOML Studio</a></li>
+            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">Pricing &amp; Licensing</a></li>
+            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">OS Downloads</a></li>
+            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">Changelog &amp; Bounties</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="text-ink font-semibold mb-2.5">Resources</div>
+          <ul class="space-y-2 text-slate">
+            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">Documentation &amp; CLI</a></li>
+            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">USB4 DMA Architecture</a></li>
+            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">Community Setups</a></li>
+            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">System Status &amp; Mirrors</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="text-ink font-semibold mb-2.5">Company &amp; Trust</div>
+          <ul class="space-y-2 text-slate">
+            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">About &amp; Hardware Labs</a></li>
+            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">WAF &amp; Edge Security</a></li>
+            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">Privacy Policy &amp; Terms</a></li>
+            <li><a  param($m); $p = $m.Groups[1].Value; $h = $m.Groups[2].Value; $clean = if ($p -eq 'index') { '/' } else { $p }; "href=`"$clean$h`""  class="hover:text-signal cursor-pointer">Account &amp; Passkeys</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-6 flex flex-wrap items-center justify-between gap-4 font-mono text-[11px] text-muted">
+      <span>© 2026 SyncDock Labs AG (Zürich &amp; San Francisco). All rights reserved.</span>
+      <span>Local-First Sovereign Architecture · Zero Cloud Telemetry</span>
+    </div>
+  </footer>
+  </main>
+
+  <div id="checkoutModal" class="fixed inset-0 z-50 bg-ink/75 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-paper rounded-xl border-2 border-ink max-w-lg w-full p-6 shadow-2xl relative">
+      <div class="flex items-center justify-between border-b border-hairline pb-3 mb-4">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+          <span class="font-display font-bold text-base text-ink">SyncDock License Provisioning &amp; Invoice</span>
+        </div>
+        <button type="button" onclick="closeCheckoutModal()" class="px-2 py-0.5 rounded bg-stone border border-hairline hover:border-ink font-mono text-xs">ESC ✕</button>
+      </div>
+
+      <form onsubmit="return completeLicenseCheckout(event)" class="space-y-4 text-xs">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block font-mono text-[10px] uppercase text-muted mb-1">Selected Tier</label>
+            <select id="checkoutPlanSelect" onchange="recalculateCheckoutTotal()" class="w-full px-3 py-2 rounded bg-surface border border-ink font-semibold text-ink">
+              <option value="pro_annual">Pro Workbench — Annual ($9/mo at GA)</option>
+              <option value="pro_perpetual">Pro Perpetual Offline Binary ($89 once)</option>
+              <option value="team_pilot">Team &amp; Air-Gap Lab ($22/seat)</option>
+              <option value="solo_free">Solo Craftsperson ($0 Forever)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-mono text-[10px] uppercase text-muted mb-1">Seats / Node Licenses</label>
+            <input id="checkoutSeatsInput" type="number" min="1" max="250" value="1" oninput="recalculateCheckoutTotal()" class="w-full px-3 py-2 rounded bg-surface border border-ink font-mono text-ink" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block font-mono text-[10px] uppercase text-muted mb-1">Billing Email / Studio Domain *</label>
+            <input id="checkoutEmailInput" type="email" required value="alex@syncdock.tech" class="w-full px-3 py-2 rounded bg-surface border border-ink font-mono text-ink" />
+          </div>
+          <div>
+            <label class="block font-mono text-[10px] uppercase text-muted mb-1">Promo / Cohort Code</label>
+            <div class="flex gap-1.5">
+              <input id="checkoutPromoInput" type="text" value="FOUNDER50" oninput="recalculateCheckoutTotal()" class="w-full px-2.5 py-2 rounded bg-surface border border-ink font-mono uppercase text-signal font-bold" />
+            </div>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-lg bg-stone/60 border border-hairline font-mono space-y-1.5">
+          <div class="flex justify-between text-slate">
+            <span>Standard GA Value:</span>
+            <span id="checkoutSubtotalText">$108.00 / yr</span>
+          </div>
+          <div class="flex justify-between text-forest font-semibold">
+            <span>Public Beta v0.9.4 Waiver (FOUNDER50):</span>
+            <span id="checkoutDiscountText">-100% Today ($0.00 Due)</span>
+          </div>
+          <div class="flex justify-between text-ink font-bold text-sm pt-2 border-t border-hairline">
+            <span>Total Due Today:</span>
+            <span id="checkoutTotalDueText">$0.00 USD</span>
+          </div>
+        </div>
+
+        <div id="checkoutReceiptBox" class="hidden p-3.5 rounded-lg bg-forest/10 border border-forest text-forest font-mono text-xs space-y-2">
+          <div class="font-bold">✓ License Key Provisioned &amp; Invoice #SD-2026-8841 Generated!</div>
+          <div>Key: <code id="checkoutGeneratedKey" class="font-bold text-ink bg-surface px-1.5 py-0.5 border border-hairline">SD-PRO-2026-994A</code></div>
+          <button type="button" onclick="downloadLatestInvoice()" class="px-3 py-1.5 rounded bg-ink text-paper text-[11px] font-bold uppercase">
+            Download Official Invoice (.HTML) ↓
+          </button>
+        </div>
+
+        <div class="flex items-center justify-end gap-2 pt-2">
+          <button type="button" onclick="closeCheckoutModal()" class="px-4 py-2.5 rounded bg-stone text-ink font-semibold">Cancel</button>
+          <button type="submit" class="tactile-btn rounded bg-signal text-white font-mono text-xs font-bold uppercase px-5 py-2.5 border border-ink">
+            Provision License &amp; Generate Receipt →
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       COMMAND MODAL (⌘K / LIVE INTERACTIVE CLI SHELL & INSTALLER)
+       ===================================================================== -->
+  <div id="commandModal" class="fixed inset-0 z-50 bg-ink/75 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-paper border-2 border-ink max-w-2xl w-full p-6 shadow-2xl relative">
+      <div class="flex items-center justify-between border-b border-hairline pb-3 mb-4 font-mono text-xs">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-signal inline-block"></span>
+          <span class="font-bold text-ink">[SYNCDOCK INTERACTIVE DAEMON CLI // v0.9.4-RC3]</span>
+        </div>
+        <button onclick="closeCommandModal()" class="px-2 py-0.5 bg-stone border border-hairline hover:border-ink font-mono text-xs">ESC ✕</button>
+      </div>
+
+      <p class="text-xs text-slate mb-3 leading-relaxed">
+        Copy the one-line installer or run interactive <code class="font-mono bg-stone px-1 border border-hairline text-ink">syncdock</code> daemon diagnostics directly in the simulated kernel shell below:
+      </p>
+
+      <!-- Copyable Command Box -->
+      <div class="bg-ink text-paper p-3 font-mono text-xs flex items-center justify-between border border-ink mb-4">
+        <code id="cliCommandText" class="text-emerald-400 truncate mr-2">curl -sSf https://syncdock.tech/install.sh | sh</code>
+        <button onclick="copyCliCommand()" id="copyCliBtn" class="px-2.5 py-1 bg-signal text-white text-[10px] font-bold uppercase shrink-0">
+          COPY INSTALLER
+        </button>
+      </div>
+
+      <!-- Quick Preset Command Pills -->
+      <div class="flex flex-wrap items-center gap-1.5 mb-3 font-mono text-[10px]">
+        <span class="text-muted uppercase mr-1">RUN PRESET:</span>
+        <button type="button" onclick="runTerminalCommand('syncdock status')" class="px-2 py-1 bg-stone hover:bg-ink hover:text-paper border border-hairline transition-colors">status</button>
+        <button type="button" onclick="runTerminalCommand('syncdock pair --ultrasonic')" class="px-2 py-1 bg-stone hover:bg-ink hover:text-paper border border-hairline transition-colors">pair --ultrasonic</button>
+        <button type="button" onclick="runTerminalCommand('syncdock beam :3000')" class="px-2 py-1 bg-stone hover:bg-ink hover:text-paper border border-hairline transition-colors">beam :3000</button>
+        <button type="button" onclick="runTerminalCommand('syncdock bench --dma')" class="px-2 py-1 bg-stone hover:bg-ink hover:text-paper border border-hairline transition-colors">bench --dma</button>
+        <button type="button" onclick="runTerminalCommand('syncdock airgap --verify')" class="px-2 py-1 bg-stone hover:bg-ink hover:text-paper border border-hairline transition-colors">airgap --verify</button>
+        <button type="button" onclick="runTerminalCommand('help')" class="px-2 py-1 bg-stone hover:bg-ink hover:text-paper border border-hairline transition-colors">help</button>
+        <button type="button" onclick="runTerminalCommand('clear')" class="px-2 py-1 bg-stone hover:bg-red-600 hover:text-white border border-hairline transition-colors">clear</button>
+      </div>
+
+      <!-- Interactive Terminal Output Window -->
+      <div class="bg-[#0F100F] text-paper border-2 border-ink p-4 font-mono text-xs">
+        <div id="cliTerminalOutput" class="h-48 overflow-y-auto space-y-1.5 text-[11px] leading-relaxed pr-1">
+          <div class="text-stone/60">SyncDock Kernel Daemon v0.9.4-RC3 (aarch64-apple-darwin / io_uring)</div>
+          <div class="text-emerald-400">✓ Enclave X25519 Ringbuffer online · 14.2 MB RSS · 0.0% idle CPU</div>
+          <div class="text-stone/80">Type a command below or click a preset above (try <span class="text-signal">syncdock bench --dma</span>):</div>
+        </div>
+        <form onsubmit="return handleTerminalInputSubmit(event)" class="mt-3 pt-2 border-t border-white/15 flex items-center gap-2">
+          <span class="text-signal font-bold">syncdock@m4-max ~ %</span>
+          <input id="cliTerminalInput" type="text" placeholder="syncdock status" autocomplete="off" class="flex-1 bg-transparent text-white focus:outline-none text-xs font-mono" />
+          <button type="submit" class="px-2.5 py-1 bg-white/10 hover:bg-signal text-white text-[10px] font-bold uppercase">EXEC ↵</button>
+        </form>
+      </div>
+
+      <div class="flex items-center justify-between font-mono text-[11px] text-muted pt-3 mt-3 border-t border-hairline">
+        <span>SHA256: e3b0c44298fc1c149afbf4c8996fb924</span>
+        <div class="flex items-center gap-3">
+          <button type="button" onclick="resetAllPersistedState()" class="text-[10px] text-muted hover:text-signal underline">Reset Demo Storage</button>
+          <span class="text-forest font-bold">SYNCDOCK.TECH SIGNED</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    
+    /* === COMMON SYNCDOCK APPLICATION JS === */
+    const syncBus = ('BroadcastChannel' in window) ? new BroadcastChannel('syncdock_live_bus') : null;
+    let audioEnabled = true;
+    let audioCtx = null;
+
+    function playTactileClick(freq = 540, duration = 0.03) {
+      if (!audioEnabled) return;
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(110, audioCtx.currentTime + duration);
+        gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {}
+    }
+
+    function toggleAudioEngine() {
+      audioEnabled = !audioEnabled;
+      const statusText = document.getElementById('audioStatusText');
+      const icon = document.getElementById('audioIcon');
+      if (statusText) statusText.textContent = audioEnabled ? 'ON' : 'MUTED';
+      if (icon) icon.className = audioEnabled ? 'ph-bold ph-speaker-high text-signal' : 'ph-bold ph-speaker-slash text-muted';
+      if (audioEnabled) playTactileClick(660, 0.04);
+    }
+
+    /* Command CLI Modal (⌘K) */
+    function openCommandModal() {
+      playTactileClick(700, 0.035);
+      const modal = document.getElementById('commandModal');
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        setTimeout(() => {
+          const inp = document.getElementById('cliTerminalInput');
+          if (inp) inp.focus();
+        }, 50);
+      }
+    }
+    function closeCommandModal() {
+      playTactileClick(440, 0.03);
+      const modal = document.getElementById('commandModal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+    function copyCliCommand() {
+      playTactileClick(800, 0.04);
+      navigator.clipboard?.writeText('curl -sSf https://syncdock.tech/install.sh | sh');
+      const btn = document.getElementById('copyCliBtn');
+      if (btn) {
+        btn.textContent = 'COPIED ✓';
+        setTimeout(() => { btn.textContent = 'COPY INSTALLER'; }, 1800);
+      }
+    }
+    function runTerminalCommand(rawCmd) {
+      playTactileClick(670, 0.03);
+      const out = document.getElementById('cliTerminalOutput');
+      if (!out) return;
+      const cmd = (rawCmd || '').trim();
+      if (!cmd) return;
+      if (cmd === 'clear') {
+        out.innerHTML = '<div class="text-stone/60">Terminal buffer cleared.</div>';
+        return;
+      }
+      const cmdRow = document.createElement('div');
+      cmdRow.className = 'text-white font-bold pt-1';
+      cmdRow.textContent = `syncdock@m4-max ~ % ${cmd}`;
+      out.appendChild(cmdRow);
+
+      const resRow = document.createElement('div');
+      resRow.className = 'text-emerald-400 pl-2';
+      if (cmd.includes('status')) {
+        resRow.innerHTML = '[DAEMON ONLINE] v0.9.4-RC3 · USB4 bridge100 (40Gbps) + Wi-Fi 7 NAN (Ch 149)<br/>Paired Nodes: iPhone 16 Pro (0.84ms RTT), iPad Pro M4 (0.92ms RTT)';
+      } else if (cmd.includes('pair')) {
+        resRow.innerHTML = '[18.4kHz GFSK CHIRP] Rotated X25519 key 0x9F84A29C77E1… · Listening for handheld ACK';
+      } else if (cmd.includes('beam')) {
+        resRow.innerHTML = '[PORT PROJECTED] https://m4.local.syncdock.tech:3000 mounted on paired iPhone 16 Pro';
+      } else if (cmd.includes('bench')) {
+        resRow.innerHTML = '[DMA BENCHMARK] 64MB lock-free ringbuffer: 1.48 GB/s sustained · 0 user-space copies · P99 jitter 0.09ms';
+      } else if (cmd.includes('airgap')) {
+        resRow.innerHTML = '[AIR-GAP VERIFIED] WAN egress = 0 packets · Bound strictly to fe80::/10 link-local &amp; USB4 PCIe tunnel';
+      } else {
+        resRow.innerHTML = 'Available commands: syncdock status, syncdock pair --ultrasonic, syncdock beam :3000, syncdock bench --dma, syncdock airgap --verify, clear';
+      }
+      out.appendChild(resRow);
+      out.scrollTop = out.scrollHeight;
+    }
+    function handleTerminalInputSubmit(e) {
+      if (e) e.preventDefault();
+      const inp = document.getElementById('cliTerminalInput');
+      if (!inp) return false;
+      const val = inp.value;
+      inp.value = '';
+      runTerminalCommand(val);
+      return false;
+    }
+    function resetAllPersistedState() {
+      try { localStorage.clear(); } catch (e) {}
+      runTerminalCommand('syncdock status');
+    }
+
+    /* Checkout Modal */
+    function openCheckoutModal(tier = 'pro') {
+      playTactileClick(640, 0.035);
+      const modal = document.getElementById('checkoutModal');
+      const sel = document.getElementById('checkoutPlanSelect');
+      if (sel) {
+        if (tier === 'solo') sel.value = 'solo_free';
+        else if (tier === 'team') sel.value = 'team_pilot';
+        else sel.value = 'pro_annual';
+      }
+      recalculateCheckoutTotal();
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+    }
+    function closeCheckoutModal() {
+      playTactileClick(440, 0.03);
+      const modal = document.getElementById('checkoutModal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+    function recalculateCheckoutTotal() {
+      const plan = document.getElementById('checkoutPlanSelect')?.value || 'pro_annual';
+      const seats = parseInt(document.getElementById('checkoutSeatsInput')?.value, 10) || 1;
+      const subtotalEl = document.getElementById('checkoutSubtotalText');
+      const discountEl = document.getElementById('checkoutDiscountText');
+      const totalEl = document.getElementById('checkoutTotalDueText');
+
+      if (plan === 'solo_free') {
+        if (subtotalEl) subtotalEl.textContent = '$0.00 / forever';
+        if (discountEl) discountEl.textContent = 'Free Community Tier';
+        if (totalEl) totalEl.textContent = '$0.00 USD';
+      } else if (plan === 'team_pilot') {
+        const val = seats * 22 * 12;
+        if (subtotalEl) subtotalEl.textContent = `$${val.toFixed(2)} / yr (${seats} seats)`;
+        if (discountEl) discountEl.textContent = '-100% Beta Pilot Waiver ($0 Today)';
+        if (totalEl) totalEl.textContent = '$0.00 USD';
+      } else {
+        const val = seats * 108;
+        if (subtotalEl) subtotalEl.textContent = `$${val.toFixed(2)} / yr`;
+        if (discountEl) discountEl.textContent = '-100% Today (FOUNDER50 Locked)';
+        if (totalEl) totalEl.textContent = '$0.00 USD';
+      }
+    }
+    function completeLicenseCheckout(e) {
+      if (e) e.preventDefault();
+      playTactileClick(840, 0.045);
+      const key = 'SD-PRO-' + Math.floor(1000 + Math.random() * 9000) + '-BETA';
+      const box = document.getElementById('checkoutReceiptBox');
+      const keyEl = document.getElementById('checkoutGeneratedKey');
+      if (keyEl) keyEl.textContent = key;
+      if (box) box.classList.remove('hidden');
+      return false;
+    }
+    function downloadLatestInvoice() {
+      playTactileClick(760, 0.035);
+      const htmlContent = '<html><body><h1>SyncDock License Invoice #SD-2026-8841</h1><p>Status: PAID ($0.00 Beta Founder Waiver)</p></body></html>';
+      const blob = new Blob([htmlContent], { type: 'text/html' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'SyncDock-Invoice-SD-2026-8841.html';
+      a.click();
+    }
+
+    /* Global Shortcuts */
+    window.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        openCommandModal();
+      } else if (e.key === 'Escape') {
+        closeCommandModal();
+        closeCheckoutModal();
+      }
+    });
+
+    /* Scroll progress line */
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+      const progress = Math.min(100, Math.max(0, (scrollTop / docHeight) * 100));
+      const bar = document.getElementById('scrollProgressBar');
+      if (bar) bar.style.width = `${progress}%`;
+    }, { passive: true });
+
+    
+      let pairedNodes = [
+        { id: 'node-m4', name: 'MacBook Pro 16" (M4 Max)', os: 'macOS 15.2 Metal', rtt: '0.00ms', key: '0x884FA29C' },
+        { id: 'node-ip16', name: 'iPhone 16 Pro', os: 'iOS 18.1 OLED', rtt: '0.84ms', key: '0x9F84E11B' },
+        { id: 'node-arch', name: 'ThinkPad X1 Carbon', os: 'Arch Linux 6.11', rtt: '1.12ms', key: '0x44C1902A' }
+      ];
+
+      function renderPairedNodesList() {
+        const c = document.getElementById('pairedNodesListContainer');
+        const count = document.getElementById('pairedNodeCount');
+        if (count) count.textContent = String(pairedNodes.length);
+        if (!c) return;
+        c.innerHTML = pairedNodes.map(n => `
+          <div class="p-3 rounded bg-paper border border-hairline flex items-center justify-between text-xs">
+            <div>
+              <div class="font-semibold text-ink flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                <span>${n.name}</span>
+                <span class="px-1.5 py-0.2 rounded bg-stone font-mono text-[10px] text-slate">${n.rtt}</span>
+              </div>
+              <div class="font-mono text-[10px] text-muted">${n.os} · Key: ${n.key}</div>
+            </div>
+            <button type="button" onclick="revokeHardwareNode('${n.id}')" class="px-2 py-1 bg-red-600/10 text-red-600 text-[10px] font-semibold hover:bg-red-600 hover:text-white rounded">Revoke</button>
+          </div>
+        `).join('');
+      }
+
+      function revokeHardwareNode(id) {
+        pairedNodes = pairedNodes.filter(n => n.id !== id);
+        renderPairedNodesList();
+      }
+
+      function addSimulatedHardwareNode() {
+        pairedNodes.push({
+          id: 'node-' + Date.now(),
+          name: 'iPad Pro M4',
+          os: 'iPadOS 18.1',
+          rtt: '0.62ms',
+          key: '0x' + Math.floor(Math.random()*0xFFFFFFFF).toString(16).toUpperCase()
+        });
+        renderPairedNodesList();
+      }
+
+      function setAuthTabMode(mode) {
+        playTactileClick(590, 0.03);
+        const s = document.getElementById('authSignupForm');
+        const l = document.getElementById('authLoginForm');
+        const c = document.getElementById('authConsolePanel');
+        const q = document.getElementById('ssoPasskeyQuickBar');
+        if (s) s.classList.toggle('hidden', mode !== 'signup');
+        if (l) l.classList.toggle('hidden', mode !== 'login');
+        if (c) c.classList.toggle('hidden', mode !== 'console');
+        if (q) q.classList.toggle('hidden', mode === 'console');
+        ['signup', 'login', 'console'].forEach(m => {
+          const btn = document.getElementById(`auth-mode-${m}`);
+          if (btn) btn.className = m === mode ? 'px-3.5 py-1.5 rounded-md bg-ink text-paper font-semibold' : 'px-3.5 py-1.5 rounded-md text-ink hover:bg-surface';
+        });
+      }
+
+      function triggerRealWebAuthnPasskey() {
+        playTactileClick(780, 0.04);
+        setAuthTabMode('console');
+        const banner = document.getElementById('authFeedbackBanner');
+        if (banner) banner.innerHTML = '✓ Signed in via <strong>Hardware Passkey (TouchID / FaceID)</strong>. Enclave session active.';
+      }
+      function triggerSsoAuth(p) {
+        playTactileClick(720, 0.035);
+        setAuthTabMode('console');
+        const banner = document.getElementById('authFeedbackBanner');
+        if (banner) banner.innerHTML = `✓ Signed in via ${p} OAuth 2.0 PKCE as alex@syncdock.tech.`;
+      }
+      function handleAuthLogin(e) {
+        if (e) e.preventDefault();
+        setAuthTabMode('console');
+        return false;
+      }
+      function handleAuthSignup(e) {
+        if (e) e.preventDefault();
+        setAuthTabMode('console');
+        return false;
+      }
+      function handleAuthLogout() {
+        setAuthTabMode('login');
+      }
+      function verifyOtpCode() {
+        playTactileClick(820, 0.04);
+        document.getElementById('consoleVerifiedBadge').textContent = 'VERIFIED ✓';
+        document.getElementById('consoleVerifiedBadge').className = 'px-2 py-0.5 bg-forest text-white text-[10px] font-bold';
+        document.getElementById('otpVerifyBox')?.classList.add('hidden');
+      }
+
+      function updateSmtpBackendCode() {
+        const host = document.getElementById('smtpHostInput')?.value || 'smtp.syncdock.tech';
+        const port = document.getElementById('smtpPortInput')?.value || '587';
+        const user = document.getElementById('smtpUserInput')?.value || 'no-reply@syncdock.tech';
+        const pre = document.getElementById('smtpServerCodePre');
+        if (pre) {
+          pre.textContent = `// server.js\nimport express from 'express';\nimport nodemailer from 'nodemailer';\nconst app = express();\nconst transporter = nodemailer.createTransport({ host: '${host}', port: ${port} });\napp.post('/api/smtp-send', (req, res) => { /* relay logic */ res.json({ ok: true }); });\napp.listen(3001);`;
+        }
+      }
+      function sendTestSmtpEmail() {
+        playTactileClick(760, 0.04);
+        const preview = document.getElementById('smtpRenderedEmailPreview');
+        if (preview) {
+          preview.innerHTML = `<div class="text-forest font-bold mb-1">✓ SMTP TEST SENT (HTTP 200 OK)</div><p class="text-xs text-slate">Diagnostic email dispatched to ${document.getElementById('smtpUserInput')?.value || 'user'}.</p>`;
+        }
+      }
+      function switchSmtpLang(l) {
+        ['node', 'python', 'php'].forEach(lang => {
+          const btn = document.getElementById(`smtp-lang-${lang}`);
+          if (btn) btn.className = lang === l ? 'px-2 py-0.5 bg-signal text-white text-[10px] font-bold' : 'px-2 py-0.5 bg-white/10 text-white text-[10px]';
+        });
+        updateSmtpBackendCode();
+      }
+
+      window.addEventListener('DOMContentLoaded', () => {
+        renderPairedNodesList();
+        updateSmtpBackendCode();
+        setAuthTabMode('login');
+      });
+    
+  </script>
+</body>
+</html>

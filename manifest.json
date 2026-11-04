@@ -1,0 +1,11 @@
+{
+  "name": "SyncDock — Tactile Cross-Device Workspace & Spatial Dock",
+  "short_name": "SyncDock",
+  "description": "Zero-cloud peer-to-peer workspace dock bridging desktop studios and handheld OLED companions in under 1 millisecond.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#F6F5F0",
+  "theme_color": "#FF4F17",
+  "orientation": "any",
+  "categories": ["developer", "productivity", "utilities"]
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SyncDock Companion — iPhone 16 Pro (120Hz OLED Node)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #10100F;
+      color: #F6F5F0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+    .font-display { font-family: 'Space Grotesk', sans-serif; }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+  <div class="w-full max-w-[390px] bg-[#161615] border-2 border-[#333330] rounded-[42px] p-5 shadow-2xl relative">
+    <!-- Dynamic Island -->
+    <div class="w-28 h-6 bg-black rounded-full mx-auto mb-4 flex items-center justify-between px-3 border border-white/10">
+      <span id="islandDot" class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+      <span class="font-mono text-[9px] text-white/80">SYNCDOCK LIVE</span>
+    </div>
+
+    <!-- Top Status Bar -->
+    <div class="flex items-center justify-between font-mono text-[10px] text-white/60 pb-3 border-b border-white/10">
+      <span>NODE_02 · IPHONE 16 PRO</span>
+      <span id="companionRtt" class="text-emerald-400 font-bold">0.84ms QUIC</span>
+    </div>
+
+    <!-- Main Mounted Viewport -->
+    <div class="my-4 p-4 bg-[#1E1E1C] border border-white/15 rounded-2xl min-h-[260px] flex flex-col justify-between">
+      <div>
+        <div class="flex items-center justify-between font-mono text-[10px] text-[#FF4F17] mb-2">
+          <span id="rxBadge">[MOUNTED LOCALHOST PORT]</span>
+          <span id="rxSpeed" class="text-emerald-400">120Hz METAL</span>
+        </div>
+        <h1 id="rxTitle" class="font-display font-bold text-xl text-white break-all">
+          https://m4.local.syncdock.tech:3000
+        </h1>
+        <p id="rxDesc" class="text-xs text-white/70 mt-2 leading-relaxed">
+          Listening on BroadcastChannel('syncdock_live_bus'). Click any payload card, swap a cartridge, or drag a real file onto the desktop stage in index.html to receive it here in real time.
+        </p>
+      </div>
+
+      <div id="rxHashBox" class="mt-4 p-2.5 bg-black/50 border border-white/10 rounded font-mono text-[10px] text-emerald-400 break-all">
+        SHA-256: E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855
+      </div>
+    </div>
+
+    <!-- Event Log -->
+    <div class="p-3 bg-black/40 border border-white/10 rounded-xl font-mono text-[10px]">
+      <div class="text-white/40 uppercase mb-1">REAL-TIME DMA PACKET STREAM</div>
+      <div id="rxLog" class="space-y-1 text-white/80 max-h-28 overflow-y-auto">
+        <div>[READY] Paired with Host Workstation</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const bus = ('BroadcastChannel' in window) ? new BroadcastChannel('syncdock_live_bus') : null;
+    if (bus) {
+      bus.onmessage = (ev) => {
+        const data = ev.data || {};
+        const log = document.getElementById('rxLog');
+        const stamp = new Date().toLocaleTimeString();
+
+        if (data.type === 'PAYLOAD_BEAM' || data.type === 'FILE_DROP') {
+          document.getElementById('rxBadge').textContent = data.badge || '[ZERO-COPY DMA]';
+          document.getElementById('rxSpeed').textContent = data.speed || '1.48 GB/s';
+          document.getElementById('rxTitle').textContent = data.title || 'Payload Received';
+          document.getElementById('rxDesc').textContent = data.desc || '';
+          if (data.sha256) {
+            document.getElementById('rxHashBox').textContent = 'SHA-256: ' + data.sha256;
+          }
+          const entry = document.createElement('div');
+          entry.className = 'text-emerald-400';
+          entry.textContent = `[${stamp}] RX: ${data.title}`;
+          log.prepend(entry);
+        } else if (data.type === 'CARTRIDGE_SWAP') {
+          document.getElementById('rxBadge').textContent = '[CARTRIDGE MOUNTED]';
+          document.getElementById('rxTitle').textContent = data.name;
+          document.getElementById('rxDesc').textContent = data.mTitle || 'Handheld HUD reconfigured.';
+          const entry = document.createElement('div');
+          entry.className = 'text-[#FF4F17]';
+          entry.textContent = `[${stamp}] CARTRIDGE: ${data.name}`;
+          log.prepend(entry);
+        }
+      };
+    }
+  </script>
+</body>
+</html>
